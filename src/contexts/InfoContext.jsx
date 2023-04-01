@@ -1,3 +1,4 @@
+import { deleteFollowships, postFollowships } from "api/followerAuth";
 import { getUserInfo } from "api/userAuth";
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -13,6 +14,9 @@ export function InfoContextProvider({ children }) {
   const [loginUserInfo, setLoginUserInfo] = useState({});
   const [pageUserInfo, setPageUserInfo] = useState({});
   const [isInfoModalShow, setIsInfoModalShow] = useState(false);
+  const [topUsers, setTopUsers] = useState([]);
+  const [followings, setFollowings] = useState([]);
+  const [followers, setFollowers] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,6 +39,85 @@ export function InfoContextProvider({ children }) {
         title: "swalTitle",
       },
     });
+  };
+
+  // 追隨狀態事件
+  const handleFollowClick = async ({ id, isFollowed }) => {
+    try {
+      if (isFollowed) {
+        await deleteFollowships({ id });
+      } else {
+        await postFollowships({ id });
+      }
+
+      setPageUserInfo((pageUserInfo) => {
+        if(pageUserInfo.id === id) {
+          return {
+            ...pageUserInfo,
+            followerCount: isFollowed
+              ? pageUserInfo.followerCount - 1
+              : pageUserInfo.followerCount + 1,
+            isFollowed: !pageUserInfo.isFollowed,
+          }
+        }
+        if (pageUserInfo.id !== id) {
+          return {
+            ...pageUserInfo,
+            followingCount: isFollowed
+              ? pageUserInfo.followingCount - 1
+              : pageUserInfo.followingCount + 1,
+            isFollowed: !pageUserInfo.isFollowed,
+          }
+        }
+      });
+
+      setTopUsers((topUsers) => {
+        return topUsers.map((topUser) => {
+          if (topUser.id === id) {
+            return {
+              ...topUser,
+              isFollowed: !topUser.isFollowed,
+            };
+          }
+          return topUser;
+        });
+      });
+
+      setFollowings((followings) => {
+        if (pageUserId === loginUserId) {
+          return followings.filter((following) => following.followingId !== id);
+        }
+        return followings.map((following) => {
+          if (following.followingId === id) {
+            return {
+              ...following,
+              Followings: {
+                ...following.Followings,
+                isFollowed: !following.Followings.isFollowed,
+              },
+            };
+          }
+          return following;
+        });
+      })
+
+      setFollowers((followers) => {
+        return followers.map((follower) => {
+          if (follower.followerId === id) {
+            return {
+              ...follower,
+              Followers: {
+                ...follower.Followers,
+                isFollowed: !follower.Followers.isFollowed,
+              },
+            };
+          }
+          return follower;
+        });
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // useEffect
@@ -83,7 +166,6 @@ export function InfoContextProvider({ children }) {
       const getUserInfoAsync = async () => {
         try {
           const userInfoData = await getUserInfo(loginUserId);
-
           setLoginUserInfo(userInfoData);
         } catch (error) {
           console.error(error);
@@ -107,6 +189,13 @@ export function InfoContextProvider({ children }) {
         setPageUserInfo,
         loginUserInfo,
         setLoginUserInfo,
+        handleFollowClick,
+        topUsers,
+        setTopUsers,
+        followings,
+        setFollowings,
+        followers,
+        setFollowers,
       }}
     >
       {children}

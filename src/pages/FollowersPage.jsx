@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { getFollowers } from "api/userAuth";
-import { deleteFollowships, postFollowships } from "api/followerAuth";
 import { TweetContext } from "contexts/TweetContext";
 import { InfoContext } from "contexts/InfoContext";
 
@@ -17,11 +16,17 @@ import UserItem from "components/UserItem";
 
 function FollowersPage() {
   const [currentPage, setCurrentPage] = useState("followers");
-  const [followers, setFollowers] = useState([]);
 
   const { tweets, isTweetModalShow, handleTweetClick } =
     useContext(TweetContext);
-  const { isUserLogin, loginAlert, pageUserInfo } = useContext(InfoContext);
+  const {
+    isUserLogin,
+    loginAlert,
+    pageUserInfo,
+    followers,
+    setFollowers,
+    handleFollowClick,
+  } = useContext(InfoContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,33 +37,6 @@ function FollowersPage() {
     if (changePage !== "followers") {
       setCurrentPage(changePage);
       navigate(`/user/${pageUserId}/${changePage}`);
-    }
-  };
-
-  // 點擊更改跟隨狀態
-  const handleFollowClick = async ({ id, isFollowed }) => {
-    try {
-      if (isFollowed === true) {
-        await deleteFollowships({ id });
-      } else {
-        await postFollowships({ id });
-      }
-      setFollowers((prvefollowers) => {
-        return prvefollowers.map((follower) => {
-          if (follower.followerId === id) {
-            return {
-              ...follower,
-              Followers: {
-                ...follower.Followers,
-                isFollowed: !follower.Followers.isFollowed,
-              },
-            };
-          }
-          return follower;
-        });
-      });
-    } catch (error) {
-      console.error(error);
     }
   };
 
@@ -82,6 +60,7 @@ function FollowersPage() {
       }
     };
     getFollowersAsync();
+    // eslint-disable-next-line
   }, [pageUserId]);
 
   return (

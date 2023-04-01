@@ -1,15 +1,16 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import { ReactComponent as EmailIcon } from "assets/icons/mail_unfocus.svg";
 import { ReactComponent as NotiFocus } from "assets/icons/noti_focus.svg";
 import { ReactComponent as NotiUnfocus } from "assets/icons/noti_unfocus.svg";
+import { InfoContext } from "contexts/InfoContext";
 import ActButton from "./ActButton";
 import ModalContainer from "./containers/ModalContainer";
 import StatusButton from "./StatusButton";
+
 
 const StyledDiv = styled.div`
   .image-box {
@@ -106,7 +107,7 @@ function EditInfoButton({ onClick }) {
   );
 }
 
-function OtherInfoButton() {
+function OtherInfoButton({ pageUserInfo, handleFollowClick }) {
   const [isNoti, setIsNoto] = useState(false);
 
   const handleNotiChange = () => {
@@ -117,10 +118,13 @@ function OtherInfoButton() {
     <StyledIcon className="d-flex justify-content-end">
       <EmailIcon />
       <div onClick={handleNotiChange}>
-        {isNoti ? <NotiUnfocus /> : <NotiFocus />}
+        {isNoti ? <NotiFocus /> : <NotiUnfocus />}
       </div>
-      {/* 還未串資料進來，先把isFollowed擺在這，串API時一併更新 */}
-      <StatusButton isFollowed={true} />
+      <StatusButton
+        id={pageUserInfo.id}
+        isFollowed={pageUserInfo.isFollowed}
+        onFollowClick={handleFollowClick}
+      />
     </StyledIcon>
   );
 }
@@ -130,6 +134,7 @@ function UserInfo({ pageUserId }) {
     isInfoModalShow,
     handleInfoEditClick,
     pageUserInfo,
+    handleFollowClick,
   } = useContext(InfoContext);
 
   const loginUserId = Number(localStorage.getItem("userId"));
@@ -145,7 +150,10 @@ function UserInfo({ pageUserId }) {
         {pageUserId === loginUserId ? (
           <EditInfoButton onClick={handleInfoEditClick} />
         ) : (
-          <OtherInfoButton />
+          <OtherInfoButton
+            pageUserInfo={pageUserInfo}
+            handleFollowClick={handleFollowClick}
+          />
         )}
       </div>
       <div className="text-box">
@@ -154,13 +162,13 @@ function UserInfo({ pageUserId }) {
         <p>{pageUserInfo.introduction}</p>
         <div className="follow-box d-flex">
           <p>
-            <span onClick={() => navigate(`/user/${loginUserId}/following`)}>
+            <span onClick={() => navigate(`/user/${pageUserId}/following`)}>
               {pageUserInfo.followingCount} 個
             </span>
             <span className="grey">跟隨中</span>
           </p>
           <p>
-            <span onClick={() => navigate(`/user/${loginUserId}/followers`)}>
+            <span onClick={() => navigate(`/user/${pageUserId}/followers`)}>
               {pageUserInfo.followerCount} 位
             </span>
             <span className="grey">跟隨者</span>
