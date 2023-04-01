@@ -9,7 +9,6 @@ import MainContainer from "components/containers/MainContainer";
 import ModalContainer from "components/containers/ModalContainer";
 import ViewContainer from "components/containers/ViewContainer";
 import Header from "components/Header";
-import ListCollection from "components/ListCollection";
 import NavBar from "components/NavBar";
 import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
@@ -100,7 +99,7 @@ function FollowersPage() {
             onPageChange={handlePageChange}
             currentPage={currentPage}
           />
-          <ListCollection>
+          <div>
             {followers.map((follower) => {
               return (
                 <UserItem
@@ -115,7 +114,7 @@ function FollowersPage() {
                 />
               );
             })}
-          </ListCollection>
+          </div>
         </ViewContainer>
         <SideBar />
       </MainContainer>
