@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { postTweet } from "api/tweetAuth";
 import { TweetContext } from "contexts/TweetContext";
+import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import { ReactComponent as CrossFocus } from "assets/icons/cross_focus.svg";
 import ActButton from "components/ActButton";
-import { postTweet } from "api/tweetAuth";
-import { InfoContext } from "contexts/InfoContext";
 
 const StyledDiv = styled.div`
   width: 600px;

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { getFollowings } from "api/userAuth";
 import { deleteFollowships, postFollowships } from "api/followerAuth";
+import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import MainContainer from "components/containers/MainContainer";
@@ -13,7 +14,6 @@ import NavBar from "components/NavBar";
 import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserItem from "components/UserItem";
-import { InfoContext } from "contexts/InfoContext";
 
 function FollowingPage() {
   const [currentPage, setCurrentPage] = useState("following");

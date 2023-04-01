@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { adminLogin } from "api/adminAuth";
 import Swal from "sweetalert2";
+import { AdminContext } from "contexts/AdminContext";
 
 // components
 import AuthContainer from "components/containers/AuthContainer";
@@ -9,7 +10,6 @@ import Logo from "components/Logo";
 import Title from "components/Title";
 import Input from "components/Input";
 import ActButton from "components/ActButton";
-import { AdminContext } from "contexts/AdminContext";
 
 function AdminLoginPage() {
   const [account, setAccount] = useState("");

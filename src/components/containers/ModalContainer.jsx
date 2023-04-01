@@ -1,7 +1,9 @@
+import styled from "styled-components";
+
+// Components
 import InfoModal from "components/modals/InfoModal";
 import ReplyModal from "components/modals/ReplyModal";
 import TweetModal from "components/modals/TweetModal";
-import styled from "styled-components";
 
 const StyledDiv = styled.div`
   height: 100vh;

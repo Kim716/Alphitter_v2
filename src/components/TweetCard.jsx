@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { postTweetLike, postTweetUnLike } from "api/tweetAuth";
+import { TweetContext } from "contexts/TweetContext";
 
+// Components
 import { ReactComponent as ReplyIcon } from "assets/icons/reply_unfocus.svg";
 import { ReactComponent as UnLikeIcon } from "assets/icons/heart_unfocus.svg";
 import { ReactComponent as LikeIcon } from "assets/icons/heart_focus.svg";
-import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { TweetContext } from "contexts/TweetContext";
-import { postTweetLike, postTweetUnLike } from "api/tweetAuth";
 
 const StyledDiv = styled.div`
   background: var(--white);

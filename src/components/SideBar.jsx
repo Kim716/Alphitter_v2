@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getTopUsers } from "api/tweetAuth";
 import { deleteFollowships, postFollowships } from "api/followerAuth";
 
 // components
 import StatusButton from "components/StatusButton";
-import { useNavigate } from "react-router-dom";
 
 const StyledDiv = styled.div`
   height: 100vh;

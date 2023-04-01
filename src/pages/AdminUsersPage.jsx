@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAdminUsers } from "api/adminAuth";
 import { AdminContext } from "contexts/AdminContext";
-import { useNavigate } from "react-router-dom";
 
-// components
+// Components
 import NavBar from "components/NavBar";
 import UserCards from "components/UserCards";
 

@@ -1,8 +1,9 @@
-import { TweetContext } from "contexts/TweetContext";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { getFollowers } from "api/userAuth";
 import { deleteFollowships, postFollowships } from "api/followerAuth";
+import { TweetContext } from "contexts/TweetContext";
+import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import MainContainer from "components/containers/MainContainer";
@@ -13,7 +14,6 @@ import NavBar from "components/NavBar";
 import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserItem from "components/UserItem";
-import { InfoContext } from "contexts/InfoContext";
 
 function FollowersPage() {
   const [currentPage, setCurrentPage] = useState("followers");

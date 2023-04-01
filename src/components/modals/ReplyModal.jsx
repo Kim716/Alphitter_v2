@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import { postReply } from "api/tweetAuth";
 import { TweetContext } from "contexts/TweetContext";
 import { InfoContext } from "contexts/InfoContext";
-import { postReply } from "api/tweetAuth";
 
 // Components
 import { ReactComponent as CrossFocus } from "assets/icons/cross_focus.svg";

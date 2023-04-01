@@ -1,6 +1,8 @@
 import { useContext, useEffect } from "react";
-import { TweetContext } from "contexts/TweetContext";
+import { useNavigate } from "react-router-dom";
 import { getAllTweets } from "api/tweetAuth";
+import { TweetContext } from "contexts/TweetContext";
+import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import MainContainer from "components/containers/MainContainer";
@@ -11,8 +13,6 @@ import Header from "components/Header";
 import NavBar from "components/NavBar";
 import { UserTweetItem } from "components/TweetItem";
 import ModalContainer from "components/containers/ModalContainer";
-import { InfoContext } from "contexts/InfoContext";
-import { useNavigate } from "react-router-dom";
 
 function MainPage() {
   const {

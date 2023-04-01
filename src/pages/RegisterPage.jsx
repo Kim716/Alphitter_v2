@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { register } from "api/userAuth";
 import Swal from "sweetalert2";
+import { register } from "api/userAuth";
 import { InfoContext } from "contexts/InfoContext";
 
 // components

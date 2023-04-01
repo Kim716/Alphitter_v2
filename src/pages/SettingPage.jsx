@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { putUserSettingInfo } from "api/userAuth";
 import Swal from "sweetalert2";
+import { putUserSettingInfo } from "api/userAuth";
 import { TweetContext } from "contexts/TweetContext";
+import { InfoContext } from "contexts/InfoContext";
 
 // components
 import MainContainer from "components/containers/MainContainer";
@@ -11,8 +13,6 @@ import NavBar from "components/NavBar";
 import Input from "components/Input";
 import ActButton from "components/ActButton";
 import ModalContainer from "components/containers/ModalContainer";
-import { InfoContext } from "contexts/InfoContext";
-import { useNavigate } from "react-router-dom";
 
 const StyledDiv = styled.div`
   height: 100vh;

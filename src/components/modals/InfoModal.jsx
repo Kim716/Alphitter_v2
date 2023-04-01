@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import styled from "styled-components";
-import { InfoContext } from "contexts/InfoContext";
 import Swal from "sweetalert2";
+import { putUserInfo } from "api/userAuth";
+import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import ActButton from "components/ActButton";
@@ -9,7 +10,6 @@ import Input from "components/Input";
 import { ReactComponent as AddImg } from "assets/icons/addimg_unfocus.svg";
 import { ReactComponent as CrossWhite } from "assets/icons/cross_white.svg";
 import { ReactComponent as CrossFocus } from "assets/icons/cross_focus.svg";
-import { putUserInfo } from "api/userAuth";
 
 const StyledDiv = styled.div`
   width: 600px;

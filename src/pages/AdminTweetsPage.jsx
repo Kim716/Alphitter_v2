@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import { deleteTweet, getAdminTweets } from "api/adminAuth";
+import { AdminContext } from "contexts/AdminContext";
 
 // components
 import NavBar from "components/NavBar";
 import Header from "components/Header";
 import { AdminTweetItem } from "components/TweetItem";
-import { useNavigate } from "react-router-dom";
-import { AdminContext } from "contexts/AdminContext";
 
 const StyledTweetsDiv = styled.div`
   border-right: 1px solid #e6ecf0;

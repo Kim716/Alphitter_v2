@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { ReactComponent as BackIcon } from "assets/icons/back_unfocus.svg";
 import { useNavigate } from "react-router-dom";
+
+// Components
+import { ReactComponent as BackIcon } from "assets/icons/back_unfocus.svg";
 
 const StyledHeader = styled.div`
   display: flex;

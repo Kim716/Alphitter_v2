@@ -1,7 +1,9 @@
+import styled from "styled-components";
+
+// Components
 import { ReactComponent as TweetsIcon } from "assets/icons/tweets_unfocus.svg";
 import { ReactComponent as HeartIcon } from "assets/icons/heart_unfocus.svg";
 import Header from "components/Header";
-import styled from "styled-components";
 
 const StyledCardCollection = styled.div`
   width: 100%;

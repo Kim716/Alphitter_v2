@@ -1,7 +1,8 @@
-import { TweetContext } from "contexts/TweetContext";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { getUserTweets } from "api/userAuth";
+import { TweetContext } from "contexts/TweetContext";
+import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import MainContainer from "components/containers/MainContainer";
@@ -13,7 +14,6 @@ import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserInfo from "components/UserInfo";
 import { UserTweetItem } from "components/TweetItem";
-import { InfoContext } from "contexts/InfoContext";
 
 function UserMainPage() {
   const [currentPage, setCurrentPage] = useState("tweets");

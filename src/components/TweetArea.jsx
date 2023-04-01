@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ActButton from "components/ActButton";
 
-// 這個元件不管點哪個區塊，都是到 TweetPage
+// Components
+import ActButton from "components/ActButton";
 
 const StyledDiv = styled.div`
   height: 200px;
