@@ -1,3 +1,6 @@
+import classNames from "classnames";
+import { twMerge } from "tailwind-merge";
+
 function Button({
   children,
   primary,
@@ -7,8 +10,33 @@ function Button({
   danger,
   rounded,
   outline,
+  ...rest
 }) {
-  return <button className="text-brand-orange">{children}</button>;
+  let classes = classNames(
+    rest.className,
+    "px-6 py-2 border text-xl rounded hover:drop-shadow-lg",
+    {
+      "border-brand-orange bg-brand-orange text-white": primary,
+      "border-secondary bg-secondary text-white": secondary,
+      "border-success bg-success text-white": success,
+      "border-warning bg-warning text-white": warning,
+      "border-danger bg-danger text-white": danger,
+      "rounded-full": rounded,
+      "bg-white": outline,
+      "text-brand-orange": outline && primary,
+      "text-secondary": outline && secondary,
+      "text-success": outline && success,
+      "text-warning": outline && warning,
+      "text-danger": outline && danger,
+    }
+  );
+  classes = twMerge(classes);
+
+  return (
+    <button {...rest} className={classes}>
+      {children}
+    </button>
+  );
 }
 
 Button.propTypes = {
