@@ -8,7 +8,7 @@ function Button({
   rounded,
   outline,
 }) {
-  return <button>{children}</button>;
+  return <button className="text-brand-orange">{children}</button>;
 }
 
 Button.propTypes = {
