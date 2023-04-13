@@ -8,7 +8,7 @@ import { AdminContext } from "contexts/AdminContext";
 // Components
 import Logo from "./Logo";
 import LinkItem from "./LinkItem";
-import ActButton from "./ActButton";
+import Button from "./Button";
 
 const StyledNav = styled.div`
   height: 100vh;
@@ -46,7 +46,10 @@ function NavBarLinks({ isUser, onTweetClick, status }) {
           isClick={status === "設定"}
           onClick={() => navigate("/setting")}
         />
-        <ActButton buttonName="推文" onClick={onTweetClick} />
+
+        <Button primary rounded className="w-full" onClick={onTweetClick}>
+          推文
+        </Button>
       </>
     );
   }

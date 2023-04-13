@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://serene-wildwood-20959.herokuapp.com/api/followships";
+const baseUrl = "https://nameless-brook-67603.herokuapp.com/api/followships";
 
 const axiosInstance = axios.create({
   baseUrl: baseUrl,
@@ -20,11 +20,10 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-
 export const postFollowships = async ({ id }) => {
   try {
     const res = await axiosInstance.post(`${baseUrl}`, {
-      id
+      id,
     });
 
     return res.data;
@@ -35,7 +34,7 @@ export const postFollowships = async ({ id }) => {
     );
     return error.response.data;
   }
-}
+};
 
 export const deleteFollowships = async ({ id }) => {
   try {

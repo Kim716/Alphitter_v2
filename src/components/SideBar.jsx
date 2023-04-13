@@ -5,7 +5,8 @@ import { getTopUsers } from "api/tweetAuth";
 import { InfoContext } from "contexts/InfoContext";
 
 // components
-import StatusButton from "components/StatusButton";
+
+import Button from "./Button";
 
 const StyledDiv = styled.div`
   height: 100vh;
@@ -56,10 +57,6 @@ const StyledPopularItem = styled.div`
       font-weight: bold;
     }
   }
-
-  button {
-    margin-left: auto;
-  }
 `;
 
 function PopularCard({ id, name, account, avatar, isFollowed, onFollowClick }) {
@@ -76,13 +73,15 @@ function PopularCard({ id, name, account, avatar, isFollowed, onFollowClick }) {
         <p className="user-name">{name}</p>
         <p>@{account}</p>
       </div>
-      <StatusButton
-        id={id}
-        isFollowed={isFollowed}
-        onFollowClick={({ id, isFollowed }) =>
-          onFollowClick?.({ id, isFollowed })
-        }
-      />
+      <Button
+        primary
+        rounded
+        className="text-base ml-auto px-3"
+        outline={!isFollowed}
+        onClick={() => onFollowClick?.({ id, isFollowed })}
+      >
+        {isFollowed ? "正在跟隨" : "跟隨"}
+      </Button>
     </StyledPopularItem>
   );
 }

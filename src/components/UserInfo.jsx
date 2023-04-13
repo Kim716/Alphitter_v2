@@ -7,10 +7,8 @@ import { ReactComponent as EmailIcon } from "assets/icons/mail_unfocus.svg";
 import { ReactComponent as NotiFocus } from "assets/icons/noti_focus.svg";
 import { ReactComponent as NotiUnfocus } from "assets/icons/noti_unfocus.svg";
 import { InfoContext } from "contexts/InfoContext";
-import ActButton from "./ActButton";
 import ModalContainer from "./containers/ModalContainer";
-import StatusButton from "./StatusButton";
-
+import Button from "./Button";
 
 const StyledDiv = styled.div`
   .image-box {
@@ -84,25 +82,22 @@ const StyledIcon = styled.div`
 `;
 
 const StyledActButton = styled.div`
-  width: 130px;
-  height: 40px;
   margin: 20px 20px 20px auto;
-
-  button {
-    width: 130px;
-    height: 40px;
-    padding: 0;
-    background: var(--white);
-    color: var(--brand-color);
-    line-height: 40px;
-    font-size: 16px;
   }
 `;
 
 function EditInfoButton({ onClick }) {
   return (
     <StyledActButton>
-      <ActButton buttonName="編輯個人資料" onClick={onClick} />
+      <Button
+        primary
+        rounded
+        outline
+        onClick={onClick}
+        className="px-4 text-base"
+      >
+        編輯個人資料
+      </Button>
     </StyledActButton>
   );
 }
@@ -120,11 +115,20 @@ function OtherInfoButton({ pageUserInfo, handleFollowClick }) {
       <div onClick={handleNotiChange}>
         {isNoti ? <NotiFocus /> : <NotiUnfocus />}
       </div>
-      <StatusButton
-        id={pageUserInfo.id}
-        isFollowed={pageUserInfo.isFollowed}
-        onFollowClick={handleFollowClick}
-      />
+      <Button
+        primary
+        rounded
+        className="text-base px-3"
+        outline={!pageUserInfo.isFollowed}
+        onClick={() => {
+          handleFollowClick({
+            id: pageUserInfo.id,
+            isFollowed: pageUserInfo.isFollowed,
+          });
+        }}
+      >
+        {pageUserInfo.isFollowed ? "正在跟隨" : "跟隨"}
+      </Button>
     </StyledIcon>
   );
 }

@@ -9,7 +9,7 @@ import AuthContainer from "components/containers/AuthContainer";
 import Logo from "components/Logo";
 import Title from "components/Title";
 import Input from "components/Input";
-import ActButton from "components/ActButton";
+import Button from "components/Button";
 
 function RegisterPage() {
   const [account, setAccount] = useState("");
@@ -255,7 +255,9 @@ function RegisterPage() {
           isError={whichError.some((which) => which === "checkPassword")}
           errorMessage={errorMessage}
         />
-        <ActButton buttonName="註冊" />
+        <Button primary rounded className="w-full">
+          註冊
+        </Button>
       </form>
       <div className="d-flex justify-content-center mt-4">
         <Link to="/login">取消</Link>
