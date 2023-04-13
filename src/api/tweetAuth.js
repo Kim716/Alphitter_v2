@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://serene-wildwood-20959.herokuapp.com/api/tweets";
+const baseUrl = "https://nameless-brook-67603.herokuapp.com/api/tweets";
 
 const axiosInstance = axios.create({
   baseUrl: baseUrl,

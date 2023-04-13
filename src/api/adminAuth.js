@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://serene-wildwood-20959.herokuapp.com/api/admin";
+const baseUrl = "https://nameless-brook-67603.herokuapp.com/api/admin";
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
