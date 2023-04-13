@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useContext } from "react";
+import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import Button from "./Button";
@@ -52,6 +54,8 @@ function UserItem({
   isFollowed,
   onFollowClick,
 }) {
+  const { loginUserId } = useContext(InfoContext);
+
   return (
     <StyledDiv className="d-flex">
       <img src={avatar} alt="" />
@@ -61,15 +65,17 @@ function UserItem({
             <span className="user-name">{name}</span>
             <span className="grey">@{account}</span>
           </div>
-          <Button
-            primary
-            rounded
-            className="text-base px-3"
-            outline={!isFollowed}
-            onClick={() => onFollowClick?.({ id, isFollowed })}
-          >
-            {isFollowed ? "正在跟隨" : "跟隨"}
-          </Button>
+          {loginUserId !== id && (
+            <Button
+              primary
+              rounded
+              className="text-base px-3"
+              outline={!isFollowed}
+              onClick={() => onFollowClick?.({ id, isFollowed })}
+            >
+              {isFollowed ? "正在跟隨" : "跟隨"}
+            </Button>
+          )}
         </div>
         <p className="content">{introduction}</p>
       </div>
