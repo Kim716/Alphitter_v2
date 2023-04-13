@@ -1,10 +1,10 @@
-# AC Simple Twitter
+# AC Simple Twitter_v2
 
 ## :sparkles: 專案介紹
 
-本專案為 ALPHA Camp 學期 3 的團體專案，是一個類似於 Twitter 的社群網站，由兩位前端、兩位後端成員共同開發，現階段僅支援電腦版。
+本專案承襲[第一版本](https://github.com/Kim716/ac_twitter)做畫面、功能、程式碼的優化。
 
-:arrow_right: 網站 [Demo](https://kim716.github.io/ac_twitter/login)
+:arrow_right: 網站 [Demo](https://kim716.github.io/Alphitter_v2/login)
 
 :arrow_right: 後端 [Repo](https://github.com/Noelle-KH/twitter-api-2023)
 
@@ -79,9 +79,13 @@ git clone https://github.com/Kim716/ac_twitter.git
 - React-router-dom 6.9.0
 - Styled-components 5.3.9
 - Sweetalert2 11.7.3
-- Axios  1.3.4
+- Axios 1.3.4
 - Bootstrap 5.2.3
 - gh-pages  4.0.0
+- TailwindCSS 3.3.1
+- prop-types 15.8.1
+- tailwind-merge 1.12.0
+- classnames 2.3.2
 
 ## 👥 Contributors
 
