@@ -9,7 +9,7 @@ import AuthContainer from "components/containers/AuthContainer";
 import Logo from "components/Logo";
 import Title from "components/Title";
 import Input from "components/Input";
-import ActButton from "components/ActButton";
+import Button from "components/Button";
 
 function AdminLoginPage() {
   const [account, setAccount] = useState("");
@@ -122,7 +122,9 @@ function AdminLoginPage() {
           isError={whichError.some((which) => which === "password")}
           errorMessage={errorMessage}
         />
-        <ActButton buttonName="登入" />
+        <Button primary rounded className="w-full">
+          登入
+        </Button>
       </form>
       <div className="d-flex justify-content-end mt-3 p-2">
         <Link to="/login">前台登入</Link>

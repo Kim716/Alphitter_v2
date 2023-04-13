@@ -7,7 +7,7 @@ import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import { ReactComponent as CrossFocus } from "assets/icons/cross_focus.svg";
-import ActButton from "components/ActButton";
+import Button from "components/Button";
 
 const StyledDiv = styled.div`
   width: 600px;
@@ -64,12 +64,6 @@ const StyledDiv = styled.div`
         margin-right: 20px;
         color: var(--error);
       }
-    }
-
-    button {
-      width: 80px;
-      margin-top: auto;
-      padding: 8px 16px;
     }
   }
 `;
@@ -175,7 +169,14 @@ const TweetModal = () => {
             {description.length === 140 && <span>字數不可超過140字</span>}
             {description.length}/140
           </p>
-          <ActButton buttonName={"推文"} onClick={handleAddTweetClick} />
+          <Button
+            primary
+            rounded
+            onClick={handleAddTweetClick}
+            className="px-4 text-base"
+          >
+            推文
+          </Button>
         </div>
       </div>
     </StyledDiv>

@@ -5,11 +5,11 @@ import { putUserInfo } from "api/userAuth";
 import { InfoContext } from "contexts/InfoContext";
 
 // Components
-import ActButton from "components/ActButton";
 import Input from "components/Input";
 import { ReactComponent as AddImg } from "assets/icons/addimg_unfocus.svg";
 import { ReactComponent as CrossWhite } from "assets/icons/cross_white.svg";
 import { ReactComponent as CrossFocus } from "assets/icons/cross_focus.svg";
+import Button from "components/Button";
 
 const StyledDiv = styled.div`
   width: 600px;
@@ -40,12 +40,6 @@ const StyledDiv = styled.div`
     h1 {
       font-weight: 700;
       font-size: 18px;
-    }
-
-    button {
-      width: 80px;
-      padding: 10px 0;
-      font-size: 16px;
     }
   }
 `;
@@ -305,14 +299,21 @@ function InfoModal() {
           </button>
           <h1>編輯個人資料</h1>
         </div>
-        <ActButton buttonName={"儲存"} onClick={handleSaveClick} />
+        <Button
+          primary
+          rounded
+          onClick={handleSaveClick}
+          className="px-4 text-base"
+        >
+          儲存
+        </Button>
       </header>
 
       {/* 圖片區 */}
       <StyledEditImg>
         <div className="cover">
           <img src={cover} alt="cover" />
-          <div className="edit-img-item">
+          <div className="edit-img-item d-flex">
             <label htmlFor="addCover">
               <AddImg />
               <input

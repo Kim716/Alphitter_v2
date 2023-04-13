@@ -1,22 +1,13 @@
 import styled from "styled-components";
 
 // Components
-import ActButton from "components/ActButton";
+import Button from "./Button";
 
 const StyledDiv = styled.div`
-  height: 200px;
-  padding: 16px 27px 0 27px;
+  height: 150px;
+  padding: 16px 27px;
   border-bottom: 10px solid #e6ecf0;
   cursor: pointer;
-
-  button {
-    width: 65px;
-    margin: auto 0 15px 0;
-    margin-bottom: 25px;
-    height: 40px;
-    padding: 0;
-    font-size: 16px;
-  }
 
   p {
     padding: 0 8px;
@@ -39,11 +30,18 @@ function TweetArea({ onTweetClick, avatar }) {
       className="d-flex justify-content-between"
       onClick={onTweetClick}
     >
-      <div className="d-flex">
-        <img src={avatar} alt="" />
-        <p>有什麼新鮮事？</p>
+      <div className="d-flex flex-grow-1">
+        <img src={avatar} alt="avatar" />
+        <p className="flex-grow-1">有什麼新鮮事？</p>
       </div>
-      <ActButton buttonName={"推文"} onClick={onTweetClick} />
+      <Button
+        primary
+        rounded
+        onClick={onTweetClick}
+        className="align-self-end text-base"
+      >
+        推文
+      </Button>
     </StyledDiv>
   );
 }

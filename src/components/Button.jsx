@@ -13,7 +13,6 @@ function Button({
   ...rest
 }) {
   let classes = classNames(
-    rest.className,
     "px-6 py-2 border text-xl rounded hover:drop-shadow-lg",
     {
       "border-brand-orange bg-brand-orange text-white": primary,
@@ -28,7 +27,8 @@ function Button({
       "text-success": outline && success,
       "text-warning": outline && warning,
       "text-danger": outline && danger,
-    }
+    },
+    rest.className
   );
   classes = twMerge(classes);
 

@@ -11,8 +11,8 @@ import MainContainer from "components/containers/MainContainer";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
 import Input from "components/Input";
-import ActButton from "components/ActButton";
 import ModalContainer from "components/containers/ModalContainer";
+import Button from "components/Button";
 
 const StyledDiv = styled.div`
   height: 100vh;
@@ -22,12 +22,6 @@ const StyledDiv = styled.div`
 
 const StyledFormDiv = styled.div`
   padding: 24px;
-
-  button {
-    display: block;
-    width: auto;
-    margin-left: auto;
-  }
 `;
 
 function SettingPage() {
@@ -306,7 +300,14 @@ function SettingPage() {
               isError={whichError.some((which) => which === "checkPassword")}
               errorMessage={errorMessage}
             />
-            <ActButton buttonName="儲存" onClick={handleSaveClick} />
+            <Button
+              primary
+              rounded
+              onClick={handleSaveClick}
+              className="px-4 text-base block ml-auto"
+            >
+              儲存
+            </Button>
           </StyledFormDiv>
         </StyledDiv>
       </MainContainer>

@@ -7,7 +7,7 @@ import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import { ReactComponent as CrossFocus } from "assets/icons/cross_focus.svg";
-import ActButton from "components/ActButton";
+import Button from "components/Button";
 
 const StyledDiv = styled.div`
   width: 600px;
@@ -78,13 +78,6 @@ const StyledContent = styled.div`
         color: var(--brand-color);
       }
     }
-  }
-
-  button {
-    width: 65px;
-    height: 40px;
-    padding: 0;
-    font-size: 16px;
   }
 
   textarea {
@@ -248,7 +241,14 @@ function ReplyModal() {
               )}
               {comment.length}/140
             </p>
-            <ActButton buttonName={"回覆"} onClick={handleAddReplyClick} />
+            <Button
+              primary
+              rounded
+              onClick={handleAddReplyClick}
+              className="px-4 text-base"
+            >
+              回覆
+            </Button>
           </div>
         </div>
       </StyledContent>
