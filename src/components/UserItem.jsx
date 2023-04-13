@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Components
-import StatusButton from "./StatusButton";
+import Button from "./Button";
 
 const StyledDiv = styled.div`
   padding: 16px 24px;
@@ -61,13 +61,15 @@ function UserItem({
             <span className="user-name">{name}</span>
             <span className="grey">@{account}</span>
           </div>
-          <StatusButton
-            id={id}
-            isFollowed={isFollowed}
-            onFollowClick={({ id, isFollowed }) =>
-              onFollowClick?.({ id, isFollowed })
-            }
-          />
+          <Button
+            primary
+            rounded
+            className="text-base px-3"
+            outline={!isFollowed}
+            onClick={() => onFollowClick?.({ id, isFollowed })}
+          >
+            {isFollowed ? "正在跟隨" : "跟隨"}
+          </Button>
         </div>
         <p className="content">{introduction}</p>
       </div>

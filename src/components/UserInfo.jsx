@@ -8,7 +8,6 @@ import { ReactComponent as NotiFocus } from "assets/icons/noti_focus.svg";
 import { ReactComponent as NotiUnfocus } from "assets/icons/noti_unfocus.svg";
 import { InfoContext } from "contexts/InfoContext";
 import ModalContainer from "./containers/ModalContainer";
-import StatusButton from "./StatusButton";
 import Button from "./Button";
 
 const StyledDiv = styled.div`
@@ -116,11 +115,20 @@ function OtherInfoButton({ pageUserInfo, handleFollowClick }) {
       <div onClick={handleNotiChange}>
         {isNoti ? <NotiFocus /> : <NotiUnfocus />}
       </div>
-      <StatusButton
-        id={pageUserInfo.id}
-        isFollowed={pageUserInfo.isFollowed}
-        onFollowClick={handleFollowClick}
-      />
+      <Button
+        primary
+        rounded
+        className="text-base px-3"
+        outline={!pageUserInfo.isFollowed}
+        onClick={() => {
+          handleFollowClick({
+            id: pageUserInfo.id,
+            isFollowed: pageUserInfo.isFollowed,
+          });
+        }}
+      >
+        {pageUserInfo.isFollowed ? "正在跟隨" : "跟隨"}
+      </Button>
     </StyledIcon>
   );
 }
