@@ -1,8 +1,8 @@
-import { deleteFollowships, postFollowships } from "api/followerAuth";
-import { getUserInfo } from "api/userAuth";
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { deleteFollowships, postFollowships } from "api/followerAuth";
+import { getUserInfo } from "api/userAuth";
 
 export const InfoContext = createContext("");
 
@@ -43,22 +43,24 @@ export function InfoContextProvider({ children }) {
 
   // 追隨狀態事件
   const handleFollowClick = async ({ id, isFollowed }) => {
+    let followingInfo;
+
     try {
       if (isFollowed) {
         await deleteFollowships({ id });
       } else {
-        await postFollowships({ id });
+        followingInfo = await postFollowships({ id });
       }
 
       setPageUserInfo((pageUserInfo) => {
-        if(pageUserInfo.id === id) {
+        if (pageUserInfo.id === id) {
           return {
             ...pageUserInfo,
             followerCount: isFollowed
               ? pageUserInfo.followerCount - 1
               : pageUserInfo.followerCount + 1,
             isFollowed: !pageUserInfo.isFollowed,
-          }
+          };
         }
         if (pageUserInfo.id !== id) {
           return {
@@ -67,7 +69,7 @@ export function InfoContextProvider({ children }) {
               ? pageUserInfo.followingCount - 1
               : pageUserInfo.followingCount + 1,
             isFollowed: !pageUserInfo.isFollowed,
-          }
+          };
         }
       });
 
@@ -84,9 +86,17 @@ export function InfoContextProvider({ children }) {
       });
 
       setFollowings((followings) => {
+        // 在自己的頁面取消追蹤會過濾掉，增加追蹤會即時顯示
         if (pageUserId === loginUserId) {
-          return followings.filter((following) => following.followingId !== id);
+          if (isFollowed) {
+            return followings.filter(
+              (following) => following.followingId !== id
+            );
+          } else {
+            return [followingInfo, ...followings];
+          }
         }
+        // 在別人的頁面去消追蹤只會更改跟隨按鈕的樣式
         return followings.map((following) => {
           if (following.followingId === id) {
             return {
@@ -99,7 +109,7 @@ export function InfoContextProvider({ children }) {
           }
           return following;
         });
-      })
+      });
 
       setFollowers((followers) => {
         return followers.map((follower) => {
