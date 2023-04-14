@@ -7,13 +7,13 @@ import { InfoContext } from "contexts/InfoContext";
 // Components
 import MainContainer from "components/containers/MainContainer";
 import ModalContainer from "components/containers/ModalContainer";
-import ViewContainer from "components/containers/ViewContainer";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
 import ReplyItem from "components/ReplyItem";
 import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserInfo from "components/UserInfo";
+import PageContainer from "components/containers/PageContainer";
 
 function UserReplysPage() {
   const [userReplies, setUserReplies] = useState([]);
@@ -62,39 +62,37 @@ function UserReplysPage() {
   }, [pageUserId]);
 
   return (
-    <div className="d-flex">
+    <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
       <NavBar isUser={true} onTweetClick={handleTweetClick} status="個人資料" />
       <MainContainer>
-        <ViewContainer>
-          <Header backIcon={true}>
-            <h1>{pageUserInfo.name}</h1>
-            <span>{userReplies.length} 則回覆</span>
-          </Header>
-          <UserInfo pageUserId={pageUserId} />
-          <SwitchBar
-            value="info"
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-          />
-          <div>
-            {userReplies.map((reply) => (
-              <ReplyItem
-                key={reply.id}
-                userId={reply.UserId}
-                avatar={reply.User.avatar}
-                name={reply.User.name}
-                account={reply.User.account}
-                createdAt={reply.createdAt}
-                replyToAccount={reply.Tweet.User.account}
-                comment={reply.comment}
-              />
-            ))}
-          </div>
-        </ViewContainer>
-        <SideBar />
+        <Header backIcon={true}>
+          <h1>{pageUserInfo.name}</h1>
+          <span>{userReplies.length} 則回覆</span>
+        </Header>
+        <UserInfo pageUserId={pageUserId} />
+        <SwitchBar
+          value="info"
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+        <div>
+          {userReplies.map((reply) => (
+            <ReplyItem
+              key={reply.id}
+              userId={reply.UserId}
+              avatar={reply.User.avatar}
+              name={reply.User.name}
+              account={reply.User.account}
+              createdAt={reply.createdAt}
+              replyToAccount={reply.Tweet.User.account}
+              comment={reply.comment}
+            />
+          ))}
+        </div>
       </MainContainer>
-    </div>
+      <SideBar />
+    </PageContainer>
   );
 }
 

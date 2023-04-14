@@ -7,12 +7,12 @@ import { InfoContext } from "contexts/InfoContext";
 // Components
 import MainContainer from "components/containers/MainContainer";
 import ModalContainer from "components/containers/ModalContainer";
-import ViewContainer from "components/containers/ViewContainer";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
 import ReplyItem from "components/ReplyItem";
 import SideBar from "components/SideBar";
 import TweetCard from "components/TweetCard";
+import PageContainer from "components/containers/PageContainer";
 
 function TweetPage() {
   const [tweet, setTweet] = useState({});
@@ -69,39 +69,37 @@ function TweetPage() {
   }, [tweetId]);
 
   return (
-    <div className="d-flex">
+    <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
       {isReplyModalShow && <ModalContainer value="回覆" />}
       <NavBar isUser={true} onTweetClick={handleTweetClick} status="首頁" />
       <MainContainer>
-        <ViewContainer>
-          <Header backIcon="true">
-            <h1>推文</h1>
-          </Header>
-          <TweetCard
-            tweet={tweet}
-            tweetId={tweetId}
-            isTweetLike={isTweetLike}
-            setIsTweetLike={setIsTweetLike}
-            currentLikeCount={currentLikeCount}
-            setCurrentLikeCount={setCurrentLikeCount}
+        <Header backIcon="true">
+          <h1>推文</h1>
+        </Header>
+        <TweetCard
+          tweet={tweet}
+          tweetId={tweetId}
+          isTweetLike={isTweetLike}
+          setIsTweetLike={setIsTweetLike}
+          currentLikeCount={currentLikeCount}
+          setCurrentLikeCount={setCurrentLikeCount}
+        />
+        {tweetReplies.map((reply) => (
+          <ReplyItem
+            key={reply.id}
+            userId={reply.UserId}
+            avatar={reply.User?.avatar}
+            name={reply.User?.name}
+            account={reply.User?.account}
+            createdAt={reply.createdAt}
+            replyToAccount={reply.Tweet?.User?.account}
+            comment={reply.comment}
           />
-          {tweetReplies.map((reply) => (
-            <ReplyItem
-              key={reply.id}
-              userId={reply.UserId}
-              avatar={reply.User?.avatar}
-              name={reply.User?.name}
-              account={reply.User?.account}
-              createdAt={reply.createdAt}
-              replyToAccount={reply.Tweet?.User?.account}
-              comment={reply.comment}
-            />
-          ))}
-        </ViewContainer>
-        <SideBar />
+        ))}
       </MainContainer>
-    </div>
+      <SideBar />
+    </PageContainer>
   );
 }
 

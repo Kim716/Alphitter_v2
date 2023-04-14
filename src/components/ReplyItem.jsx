@@ -54,10 +54,10 @@ function ReplyItem({
   comment,
 }) {
   return (
-    <StyledDiv className="d-flex">
+    <StyledDiv className="flex">
       <img src={avatar} alt="avatar" data-id={userId} />
 
-      <div className="flex-grow-1">
+      <div className="grow">
         <p className="user_info">
           <span className="reply_name">{name}</span>@{account}・{createdAt}
         </p>

@@ -6,7 +6,6 @@ import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import MainContainer from "components/containers/MainContainer";
-import ViewContainer from "components/containers/ViewContainer";
 import ModalContainer from "components/containers/ModalContainer";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
@@ -14,6 +13,7 @@ import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserInfo from "components/UserInfo";
 import { UserTweetItem } from "components/TweetItem";
+import PageContainer from "components/containers/PageContainer";
 
 function UserMainPage() {
   const [currentPage, setCurrentPage] = useState("tweets");
@@ -63,43 +63,41 @@ function UserMainPage() {
   }, [pageUserId, setTweets]);
 
   return (
-    <div className="d-flex">
+    <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
       {isReplyModalShow && <ModalContainer value="回覆" />}
       <NavBar isUser={true} onTweetClick={handleTweetClick} status="個人資料" />
       <MainContainer>
-        <ViewContainer>
-          <Header backIcon={true}>
-            <h1>{pageUserInfo.name}</h1>
-            <span>{tweets.length} 則推文</span>
-          </Header>
-          <UserInfo pageUserId={pageUserId} />
-          <SwitchBar
-            value="info"
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-          />
-          <div>
-            {tweets.map((tweet) => (
-              <UserTweetItem
-                key={tweet.id}
-                tweetId={tweet.id}
-                avatar={tweet.User.avatar}
-                userId={tweet.User.id}
-                name={tweet.User.name}
-                account={tweet.User.account}
-                createdAt={tweet.createdAt}
-                description={tweet.description}
-                replyCount={tweet.replyCount}
-                likeCount={tweet.likeCount}
-                isLiked={tweet.isLiked}
-              />
-            ))}
-          </div>
-        </ViewContainer>
-        <SideBar />
+        <Header backIcon={true}>
+          <h1>{pageUserInfo.name}</h1>
+          <span>{tweets.length} 則推文</span>
+        </Header>
+        <UserInfo pageUserId={pageUserId} />
+        <SwitchBar
+          value="info"
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+        <div>
+          {tweets.map((tweet) => (
+            <UserTweetItem
+              key={tweet.id}
+              tweetId={tweet.id}
+              avatar={tweet.User.avatar}
+              userId={tweet.User.id}
+              name={tweet.User.name}
+              account={tweet.User.account}
+              createdAt={tweet.createdAt}
+              description={tweet.description}
+              replyCount={tweet.replyCount}
+              likeCount={tweet.likeCount}
+              isLiked={tweet.isLiked}
+            />
+          ))}
+        </div>
       </MainContainer>
-    </div>
+      <SideBar />
+    </PageContainer>
   );
 }
 
