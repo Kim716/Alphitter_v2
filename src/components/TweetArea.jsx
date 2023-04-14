@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 // Components
 import Button from "./Button";
+import AvatarLink from "./AvatarLink";
 
 const StyledDiv = styled.div`
   height: 150px;
@@ -24,11 +25,12 @@ const StyledDiv = styled.div`
   }
 `;
 
-function TweetArea({ onTweetClick, avatar }) {
+function TweetArea({ onTweetClick, avatar, userId }) {
+  console.log(userId);
   return (
     <StyledDiv className="flex justify-between" onClick={onTweetClick}>
       <div className="flex grow">
-        <img src={avatar} alt="avatar" />
+        <AvatarLink avatar={avatar} userId={userId} />
         <p className="grow">有什麼新鮮事？</p>
       </div>
       <Button

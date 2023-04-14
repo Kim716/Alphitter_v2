@@ -60,6 +60,7 @@ function MainPage() {
         <TweetArea
           onTweetClick={handleTweetClick}
           avatar={loginUserInfo.avatar}
+          userId={loginUserInfo.id}
         />
         <div>
           {tweets.map((tweet) => (

@@ -9,6 +9,7 @@ import { ReactComponent as ReplyUnfocus } from "assets/icons/reply_unfocus.svg";
 import { ReactComponent as CrossUnfocus } from "assets/icons/cross_unfocus.svg";
 import { ReactComponent as HeartUnfocus } from "assets/icons/heart_unfocus.svg";
 import { ReactComponent as HeartFocus } from "assets/icons/heart_focus.svg";
+import AvatarLink from "./AvatarLink";
 
 const StyledDiv = styled.div`
   padding: 16px 24px;
@@ -26,10 +27,6 @@ const StyledDiv = styled.div`
     margin-right: 8px;
     border-radius: 50%;
     object-fit: cover;
-
-    &:hover {
-      outline: 2px solid var(--light-orange);
-    }
   }
 
   .grey {
@@ -131,18 +128,13 @@ function UserTweetItem({
     }
   };
 
-  const handleAvatarClick = (e) => {
-    e.stopPropagation();
-    navigate(`/user/${e.target.dataset.id}`);
-  };
-
   return (
     <StyledDiv
       className="flex"
       data-id={tweetId}
       onClick={handleTweetItemClick}
     >
-      <img src={avatar} alt="" data-id={userId} onClick={handleAvatarClick} />
+      <AvatarLink avatar={avatar} userId={userId} />
       <div className="text-box grow">
         <div>
           <span className="user-name">{name}</span>

@@ -4,16 +4,11 @@ import { InfoContext } from "contexts/InfoContext";
 
 // Components
 import Button from "./Button";
+import AvatarLink from "./AvatarLink";
 
 const StyledDiv = styled.div`
   padding: 16px 24px;
   border-bottom: 1px solid #e6ecf0;
-  img,
-  span,
-  p,
-  svg {
-    cursor: pointer;
-  }
 
   .grey {
     color: var(--secondary);
@@ -58,7 +53,7 @@ function UserItem({
 
   return (
     <StyledDiv className="flex">
-      <img src={avatar} alt="" />
+      <AvatarLink avatar={avatar} userId={id} />
       <div className="text-box flex flex-col flex-wrap">
         <div className="flex justify-between items-center">
           <div>
