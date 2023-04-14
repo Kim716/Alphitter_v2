@@ -260,7 +260,12 @@ function RegisterPage() {
         </Button>
       </form>
       <div className="flex justify-center mt-6">
-        <Link to="/login">取消</Link>
+        <Link
+          to="/login"
+          className="text-blue-500 underline underline-offset-4 hover:text-blue-700"
+        >
+          取消
+        </Link>
       </div>
     </AuthContainer>
   );

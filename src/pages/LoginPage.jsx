@@ -130,9 +130,19 @@ function LoginPage() {
         </Button>
       </form>
       <div className="flex justify-end mt-4 p-2">
-        <Link to="/register">註冊</Link>
+        <Link
+          to="/register"
+          className="text-blue-500 underline underline-offset-4 hover:text-blue-700"
+        >
+          註冊
+        </Link>
         <span className="mx-2">・</span>
-        <Link to="/admin">後台登入</Link>
+        <Link
+          to="/admin"
+          className="text-blue-500 underline underline-offset-4 hover:text-blue-700"
+        >
+          後台登入
+        </Link>
       </div>
     </AuthContainer>
   );

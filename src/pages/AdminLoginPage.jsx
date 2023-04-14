@@ -127,7 +127,12 @@ function AdminLoginPage() {
         </Button>
       </form>
       <div className="flex justify-end mt-4 p-2">
-        <Link to="/login">前台登入</Link>
+        <Link
+          to="/login"
+          className="text-blue-500 underline underline-offset-4 hover:text-blue-700"
+        >
+          前台登入
+        </Link>
       </div>
     </AuthContainer>
   );
