@@ -25,7 +25,8 @@ function UserMainPage() {
     handleTweetClick,
     isReplyModalShow,
   } = useContext(TweetContext);
-  const { isUserLogin, loginAlert, pageUserInfo } = useContext(InfoContext);
+  const { isUserLogin, loginAlert, pageUserInfo, loginUserInfo } =
+    useContext(InfoContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -60,7 +61,7 @@ function UserMainPage() {
     };
 
     getUserTweetsAsync();
-  }, [pageUserId, setTweets]);
+  }, [pageUserId, setTweets, loginUserInfo]);
 
   return (
     <PageContainer>

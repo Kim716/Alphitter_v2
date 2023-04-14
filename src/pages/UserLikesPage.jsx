@@ -21,7 +21,8 @@ function UserLikesPage() {
 
   const { isTweetModalShow, handleTweetClick, isReplyModalShow } =
     useContext(TweetContext);
-  const { isUserLogin, loginAlert, pageUserInfo } = useContext(InfoContext);
+  const { isUserLogin, loginAlert, pageUserInfo, loginUserInfo } =
+    useContext(InfoContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -60,7 +61,7 @@ function UserLikesPage() {
     };
 
     getUserLikedTweetsAsync();
-  }, [pageUserId]);
+  }, [pageUserId, loginUserInfo]);
 
   return (
     <PageContainer>
