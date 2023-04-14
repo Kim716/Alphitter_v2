@@ -19,7 +19,7 @@ const StyledDiv = styled.div`
 
 function ModalContainer({ value }) {
   return (
-    <StyledDiv className="d-flex justify-content-center">
+    <StyledDiv className="flex justify-center">
       {value === "推文" && <TweetModal />}
       {value === "回覆" && <ReplyModal />}
       {value === "編輯個人資料" && <InfoModal />}

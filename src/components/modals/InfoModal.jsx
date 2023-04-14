@@ -292,8 +292,8 @@ function InfoModal() {
 
   return (
     <StyledDiv>
-      <header className="cross-box d-flex justify-content-between">
-        <div className="d-flex align-items-center">
+      <header className="cross-box flex justify-between">
+        <div className="flex items-center">
           <button className="cross-icon">
             <CrossFocus onClick={handleInfoEditClick} />
           </button>
@@ -313,7 +313,7 @@ function InfoModal() {
       <StyledEditImg>
         <div className="cover">
           <img src={cover} alt="cover" />
-          <div className="edit-img-item d-flex">
+          <div className="edit-img-item flex">
             <label htmlFor="addCover">
               <AddImg />
               <input

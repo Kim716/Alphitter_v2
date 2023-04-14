@@ -138,12 +138,12 @@ function UserTweetItem({
 
   return (
     <StyledDiv
-      className="d-flex"
+      className="flex"
       data-id={tweetId}
       onClick={handleTweetItemClick}
     >
       <img src={avatar} alt="" data-id={userId} onClick={handleAvatarClick} />
-      <div className="text-box flex-grow-1">
+      <div className="text-box grow">
         <div>
           <span className="user-name">{name}</span>
           <span className="grey">
@@ -152,12 +152,12 @@ function UserTweetItem({
         </div>
         {/* 最大顯示字數140字 */}
         <p className="description">{description}</p>
-        <div className="icon-box d-flex">
-          <div className="d-flex align-items-center">
+        <div className="icon-box flex">
+          <div className="flex items-center">
             <ReplyUnfocus onClick={handleReplyClick} data-id={tweetId} />
             <span>{replyCount}</span>
           </div>
-          <div className="d-flex align-items-center" onClick={handleLikeClick}>
+          <div className="flex items-center" onClick={handleLikeClick}>
             {isTweetLike ? <HeartFocus /> : <HeartUnfocus />}
             <span>{currentLikeCount}</span>
           </div>
@@ -178,9 +178,9 @@ function AdminTweetItem({
   onClick,
 }) {
   return (
-    <StyledDiv className="d-flex" data-id={tweetId}>
+    <StyledDiv className="flex" data-id={tweetId}>
       <img src={avatar} alt="" />
-      <div className="d-flex flex-column flex-wrap flex-grow-1 text-box">
+      <div className="flex flex-col flex-wrap grow text-box">
         <div>
           <span className="user-name">{name}</span>
           <span className="grey">

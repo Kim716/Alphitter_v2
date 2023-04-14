@@ -26,13 +26,10 @@ const StyledDiv = styled.div`
 
 function TweetArea({ onTweetClick, avatar }) {
   return (
-    <StyledDiv
-      className="d-flex justify-content-between"
-      onClick={onTweetClick}
-    >
-      <div className="d-flex flex-grow-1">
+    <StyledDiv className="flex justify-between" onClick={onTweetClick}>
+      <div className="flex grow">
         <img src={avatar} alt="avatar" />
-        <p className="flex-grow-1">有什麼新鮮事？</p>
+        <p className="grow">有什麼新鮮事？</p>
       </div>
       <Button
         primary

@@ -1,4 +1,5 @@
 // CSS
+import "./styles/reset.css";
 import "./styles/base.css";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 
