@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Alphitter_v2/static/css/main.57424b88.css",
-    "main.js": "/Alphitter_v2/static/js/main.2609622c.js",
+    "main.css": "/Alphitter_v2/static/css/main.7ebfabc3.css",
+    "main.js": "/Alphitter_v2/static/js/main.e8c58626.js",
     "static/media/set_unfocus.svg": "/Alphitter_v2/static/media/set_unfocus.f816c687fe9a4bd78229ba4e78f87620.svg",
     "static/media/set_focus.svg": "/Alphitter_v2/static/media/set_focus.53670273838eeeda8dbecd8c276f620c.svg",
     "static/media/noti_focus.svg": "/Alphitter_v2/static/media/noti_focus.0445c5255607edcb258c51946d18e04f.svg",
@@ -24,11 +24,11 @@
     "static/media/back_unfocus.svg": "/Alphitter_v2/static/media/back_unfocus.c82fe112026a14d0a493524ff967f936.svg",
     "index.html": "/Alphitter_v2/index.html",
     "static/media/heart_focus.svg": "/Alphitter_v2/static/media/heart_focus.5e5d892842ae545d6d81b84cec2019b6.svg",
-    "main.57424b88.css.map": "/Alphitter_v2/static/css/main.57424b88.css.map",
-    "main.2609622c.js.map": "/Alphitter_v2/static/js/main.2609622c.js.map"
+    "main.7ebfabc3.css.map": "/Alphitter_v2/static/css/main.7ebfabc3.css.map",
+    "main.e8c58626.js.map": "/Alphitter_v2/static/js/main.e8c58626.js.map"
   },
   "entrypoints": [
-    "static/css/main.57424b88.css",
-    "static/js/main.2609622c.js"
+    "static/css/main.7ebfabc3.css",
+    "static/js/main.e8c58626.js"
   ]
 }
