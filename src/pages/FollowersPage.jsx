@@ -7,12 +7,12 @@ import { InfoContext } from "contexts/InfoContext";
 // Components
 import MainContainer from "components/containers/MainContainer";
 import ModalContainer from "components/containers/ModalContainer";
-import ViewContainer from "components/containers/ViewContainer";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
 import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserItem from "components/UserItem";
+import PageContainer from "components/containers/PageContainer";
 
 function FollowersPage() {
   const [currentPage, setCurrentPage] = useState("followers");
@@ -64,40 +64,38 @@ function FollowersPage() {
   }, [pageUserId]);
 
   return (
-    <div className="d-flex">
+    <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
       <NavBar isUser={true} onTweetClick={handleTweetClick} />
       <MainContainer>
-        <ViewContainer>
-          <Header backIcon={true}>
-            <h1>{pageUserInfo.name}</h1>
-            <span>{tweets.length} 則推文</span>
-          </Header>
-          <SwitchBar
-            value="follow"
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-          />
-          <div>
-            {followers.map((follower) => {
-              return (
-                <UserItem
-                  key={follower.followerId}
-                  id={follower.followerId}
-                  name={follower.Followers.name}
-                  account={follower.Followers.account}
-                  introduction={follower.Followers.introduction}
-                  avatar={follower.Followers.avatar}
-                  isFollowed={follower.Followers.isFollowed}
-                  onFollowClick={handleFollowClick}
-                />
-              );
-            })}
-          </div>
-        </ViewContainer>
-        <SideBar />
+        <Header backIcon={true}>
+          <h1>{pageUserInfo.name}</h1>
+          <span>{tweets.length} 則推文</span>
+        </Header>
+        <SwitchBar
+          value="follow"
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+        <div>
+          {followers.map((follower) => {
+            return (
+              <UserItem
+                key={follower.followerId}
+                id={follower.followerId}
+                name={follower.Followers.name}
+                account={follower.Followers.account}
+                introduction={follower.Followers.introduction}
+                avatar={follower.Followers.avatar}
+                isFollowed={follower.Followers.isFollowed}
+                onFollowClick={handleFollowClick}
+              />
+            );
+          })}
+        </div>
       </MainContainer>
-    </div>
+      <SideBar />
+    </PageContainer>
   );
 }
 

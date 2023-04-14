@@ -57,10 +57,10 @@ function UserItem({
   const { loginUserId } = useContext(InfoContext);
 
   return (
-    <StyledDiv className="d-flex">
+    <StyledDiv className="flex">
       <img src={avatar} alt="" />
-      <div className="text-box d-flex flex-column flex-wrap">
-        <div className="d-flex justify-content-between align-items-center">
+      <div className="text-box flex flex-col flex-wrap">
+        <div className="flex justify-between items-center">
           <div>
             <span className="user-name">{name}</span>
             <span className="grey">@{account}</span>

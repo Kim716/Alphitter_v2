@@ -27,12 +27,9 @@ const StyledDiv = styled.div`
   }
 `;
 
-function UserPageSwitchBar({ 
-  onPageChange,
-  currentPage }) {
-
+function UserPageSwitchBar({ onPageChange, currentPage }) {
   return (
-    <StyledDiv className="d-flex">
+    <StyledDiv className="flex">
       <div
         className={currentPage === "tweets" ? "active" : ""}
         onClick={() => onPageChange?.("tweets")}
@@ -55,12 +52,9 @@ function UserPageSwitchBar({
   );
 }
 
-function FollowPageSwitchBar({
-  onPageChange,
-  currentPage,
-}) {
+function FollowPageSwitchBar({ onPageChange, currentPage }) {
   return (
-    <StyledDiv className="d-flex">
+    <StyledDiv className="flex">
       <div
         className={currentPage === "followers" ? "active" : ""}
         onClick={() => onPageChange?.("followers")}

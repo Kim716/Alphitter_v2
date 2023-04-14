@@ -7,12 +7,12 @@ import { InfoContext } from "contexts/InfoContext";
 // Components
 import MainContainer from "components/containers/MainContainer";
 import SideBar from "components/SideBar";
-import ViewContainer from "components/containers/ViewContainer";
 import TweetArea from "components/TweetArea";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
 import { UserTweetItem } from "components/TweetItem";
 import ModalContainer from "components/containers/ModalContainer";
+import PageContainer from "components/containers/PageContainer";
 
 function MainPage() {
   const {
@@ -49,41 +49,39 @@ function MainPage() {
   }, [setTweets]);
 
   return (
-    <div className="d-flex">
+    <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
       {isReplyModalShow && <ModalContainer value="回覆" />}
       <NavBar isUser={true} onTweetClick={handleTweetClick} status="首頁" />
       <MainContainer>
-        <ViewContainer>
-          <Header>
-            <h1>首頁</h1>
-          </Header>
-          <TweetArea
-            onTweetClick={handleTweetClick}
-            avatar={loginUserInfo.avatar}
-          />
-          <div>
-            {tweets.map((tweet) => (
-              <UserTweetItem
-                key={tweet.id}
-                tweetId={tweet.id}
-                avatar={tweet.User.avatar}
-                userId={tweet.UserId}
-                name={tweet.User.name}
-                account={tweet.User.account}
-                createdAt={tweet.createdAt}
-                description={tweet.description}
-                replyCount={tweet.replyCount}
-                likeCount={tweet.likeCount}
-                isLiked={tweet.isLiked}
-                tweet={tweet}
-              />
-            ))}
-          </div>
-        </ViewContainer>
-        <SideBar />
+        <Header>
+          <h1>首頁</h1>
+        </Header>
+        <TweetArea
+          onTweetClick={handleTweetClick}
+          avatar={loginUserInfo.avatar}
+        />
+        <div>
+          {tweets.map((tweet) => (
+            <UserTweetItem
+              key={tweet.id}
+              tweetId={tweet.id}
+              avatar={tweet.User.avatar}
+              userId={tweet.UserId}
+              name={tweet.User.name}
+              account={tweet.User.account}
+              createdAt={tweet.createdAt}
+              description={tweet.description}
+              replyCount={tweet.replyCount}
+              likeCount={tweet.likeCount}
+              isLiked={tweet.isLiked}
+              tweet={tweet}
+            />
+          ))}
+        </div>
       </MainContainer>
-    </div>
+      <SideBar />
+    </PageContainer>
   );
 }
 

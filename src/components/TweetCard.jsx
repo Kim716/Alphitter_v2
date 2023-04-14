@@ -136,7 +136,7 @@ function TweetCard({
   return (
     <StyledDiv>
       <div className="card_content">
-        <div className="content_head d-flex align-items-center">
+        <div className="content_head flex items-center">
           <img
             src={tweet.User?.avatar}
             alt="avatar"
@@ -156,7 +156,7 @@ function TweetCard({
         </p>
       </div>
       <div className="card_info">
-        <div className="d-flex">
+        <div className="flex">
           <p>
             <span>{tweet.replyCount}</span>回覆
           </p>
@@ -165,7 +165,7 @@ function TweetCard({
           </p>
         </div>
       </div>
-      <div className="card_action">
+      <div className="card_action flex">
         <ReplyIcon onClick={handleReplyClick} data-id={tweet.id} />
         {isTweetLike ? (
           <LikeIcon onClick={handleLikeClick} />

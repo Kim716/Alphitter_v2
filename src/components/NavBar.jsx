@@ -108,10 +108,10 @@ function NavBar({ isUser, onTweetClick, status }) {
   };
 
   return (
-    <StyledNav className="col-3 d-flex flex-column align-items-end">
-      <div className="nav d-flex flex-column flex-grow-1 ">
+    <StyledNav className="col-span-1 flex flex-col items-end">
+      <div className="nav flex flex-col grow ">
         <Logo />
-        <div className="navLinks d-flex flex-column justify-content-between flex-grow-1">
+        <div className="navLinks flex flex-col justify-between grow">
           <div>
             <NavBarLinks
               isUser={isUser}

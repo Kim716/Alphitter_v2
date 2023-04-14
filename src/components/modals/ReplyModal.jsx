@@ -206,14 +206,14 @@ function ReplyModal() {
       <div className="cross-box">
         <CrossFocus onClick={handleReplyClick} />
       </div>
-      <StyledContent className="d-flex">
-        <div className="d-flex flex-column me-3">
+      <StyledContent className="flex">
+        <div className="flex flex-col mr-4">
           <img src={tweet.User?.avatar} alt="avatar" />
-          <div className="side-line d-flex justify-content-center align-items-center"></div>
+          <div className="side-line flex justify-center items-center"></div>
           <img src={loginUserInfo.avatar} alt="" />
         </div>
-        <div className="content-area flex-grow-1">
-          <div className="d-flex align-items-center title">
+        <div className="content-area grow">
+          <div className="flex items-center title">
             <p className="user-name">{tweet.User?.name}</p>
             <span className="grey">
               @ {tweet.User?.account} · {tweet.createdAt}
@@ -233,7 +233,7 @@ function ReplyModal() {
             placeholder="推你的回覆"
             maxLength="140"
           />
-          <div className="d-flex justify-content-end align-items-center">
+          <div className="flex justify-end items-center">
             <p className="hint me-3">
               {isEmpty && <span className="error me-3">內容不可全為空白</span>}
               {comment.length === 140 && (

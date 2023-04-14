@@ -96,20 +96,20 @@ function UserCard({
         <img src={cover} alt="cover" className="cover" />
         <img src={avatar} alt="avatar" className="avatar" />
       </div>
-      <div className="d-flex flex-column align-items-center">
+      <div className="flex flex-col items-center">
         <h2 className="name">{name}</h2>
         <p className="account">@{account}</p>
-        <div className="user-data d-flex justify-content-evenly">
-          <p className="d-flex align-items-center justify-content-between">
+        <div className="user-data flex justify-evenly">
+          <p className="flex items-center justify-between">
             <TweetsIcon />
             <span>{tweetCount}</span>
           </p>
-          <p className="d-flex align-items-center justify-content-between">
+          <p className="flex items-center justify-between">
             <HeartIcon />
             <span>{likeCount}</span>
           </p>
         </div>
-        <div className="follow-data d-flex justify-content-center">
+        <div className="follow-data flex justify-center">
           <p>
             <span>{followingCount} 個</span>跟隨中
           </p>
@@ -124,12 +124,12 @@ function UserCard({
 
 function UserCards({ users }) {
   return (
-    <div className="col-9">
+    <div className="col-span-3">
       <Header>
         <h1>使用者列表</h1>
       </Header>
 
-      <StyledCardCollection className="d-flex flex-wrap">
+      <StyledCardCollection className="flex flex-wrap">
         {users.map((user) => (
           <UserCard {...user} key={user.id} />
         ))}

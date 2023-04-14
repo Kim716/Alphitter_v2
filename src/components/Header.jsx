@@ -52,7 +52,7 @@ function Header({ backIcon, children }) {
       ) : (
         false
       )}
-      <div className="d-flex flex-column title">{children}</div>
+      <div className="flex flex-col title">{children}</div>
     </StyledHeader>
   );
 }

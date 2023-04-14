@@ -110,7 +110,7 @@ function OtherInfoButton({ pageUserInfo, handleFollowClick }) {
   };
 
   return (
-    <StyledIcon className="d-flex justify-content-end">
+    <StyledIcon className="flex justify-end">
       <EmailIcon />
       <div onClick={handleNotiChange}>
         {isNoti ? <NotiFocus /> : <NotiUnfocus />}
@@ -148,7 +148,7 @@ function UserInfo({ pageUserId }) {
   return (
     <StyledDiv>
       {isInfoModalShow && <ModalContainer value="編輯個人資料" />}
-      <div className="image-box d-flex flex-column">
+      <div className="image-box flex flex-col">
         <img className="cover" src={pageUserInfo.cover} alt="" />
         <img className="avatar" src={pageUserInfo.avatar} alt="" />
         {pageUserId === loginUserId ? (
@@ -164,7 +164,7 @@ function UserInfo({ pageUserId }) {
         <h1>{pageUserInfo.name}</h1>
         <span className="grey">@{pageUserInfo.account}</span>
         <p>{pageUserInfo.introduction}</p>
-        <div className="follow-box d-flex">
+        <div className="follow-box flex">
           <p onClick={() => navigate(`/user/${pageUserId}/following`)}>
             <span>{pageUserInfo.followingCount} 個</span>
             <span className="grey">跟隨中</span>

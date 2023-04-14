@@ -10,7 +10,6 @@ import Button from "./Button";
 
 const StyledDiv = styled.div`
   height: 100vh;
-  border-left: 1px solid var(--grey3);
   padding: 10px 25px;
 `;
 
@@ -67,9 +66,9 @@ function PopularCard({ id, name, account, avatar, isFollowed, onFollowClick }) {
   };
 
   return (
-    <StyledPopularItem className="d-flex">
+    <StyledPopularItem className="flex">
       <img src={avatar} data-id={id} alt="avatar" onClick={handleAvatarClick} />
-      <div className="user-title d-flex flex-column">
+      <div className="user-title flex flex-col">
         <p className="user-name">{name}</p>
         <p>@{account}</p>
       </div>
@@ -103,8 +102,9 @@ function SideBar() {
     // eslint-disable-next-line
   }, []);
 
+  // !!!
   return (
-    <StyledDiv className="col-4">
+    <StyledDiv className="col-span-1">
       <StyledPopular>
         <div className="header">
           <h1>推薦跟隨</h1>

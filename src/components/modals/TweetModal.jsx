@@ -145,15 +145,15 @@ const TweetModal = () => {
   };
 
   return (
-    <StyledDiv className="d-flex flex-column">
+    <StyledDiv className="flex flex-col">
       <div className="cross-box">
         <CrossFocus onClick={handleTweetClick} />
       </div>
-      <div className="content flex-grow-1">
-        <div className="d-flex">
+      <div className="content grow">
+        <div className="flex">
           <img src={loginUserInfo.avatar} alt="" />
           <textarea
-            className="flex-grow-1"
+            className="grow"
             value={description}
             onChange={(e) => {
               setDescription(e.target.value);
@@ -163,7 +163,7 @@ const TweetModal = () => {
             maxLength="140"
           />
         </div>
-        <div className="footer d-flex justify-content-end align-items-center">
+        <div className="footer flex justify-end items-center">
           <p>
             {isEmpty && <span>內容不可全為空白</span>}
             {description.length === 140 && <span>字數不可超過140字</span>}

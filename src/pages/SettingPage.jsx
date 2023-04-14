@@ -13,12 +13,7 @@ import NavBar from "components/NavBar";
 import Input from "components/Input";
 import ModalContainer from "components/containers/ModalContainer";
 import Button from "components/Button";
-
-const StyledDiv = styled.div`
-  height: 100vh;
-  border-right: 1px solid var(--grey3);
-  overflow: auto;
-`;
+import PageContainer from "components/containers/PageContainer";
 
 const StyledFormDiv = styled.div`
   padding: 24px;
@@ -241,77 +236,75 @@ function SettingPage() {
   }, [isUserLogin, loginAlert, navigate]);
 
   return (
-    <div className="d-flex">
+    <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
       <NavBar isUser={true} onTweetClick={handleTweetClick} status="設定" />
       <MainContainer>
-        <StyledDiv className="col-8">
-          <Header>
-            <h1>帳戶設定</h1>
-          </Header>
-          <StyledFormDiv>
-            <Input
-              id="input_account"
-              label="帳號"
-              type="text"
-              placeholder="重新設定帳號"
-              value={account}
-              onChange={handleAccountChange}
-              isError={whichError.some((which) => which === "account")}
-              errorMessage={errorMessage}
-            />
-            <Input
-              id="input_name"
-              label="名稱"
-              type="text"
-              placeholder="請設定使用者名稱，不可超過50字"
-              value={name}
-              onChange={handleNameChange}
-              isError={whichError.some((which) => which === "name")}
-              errorMessage={errorMessage}
-            />
-            <Input
-              id="input_email"
-              label="Email"
-              type="text"
-              placeholder="請輸入 Email"
-              value={email}
-              onChange={handleEmailChange}
-              isError={whichError.some((which) => which === "email")}
-              errorMessage={errorMessage}
-            />
-            <Input
-              id="input_password"
-              label="密碼"
-              type="password"
-              placeholder="請設定密碼"
-              value={password}
-              onChange={handlePasswordChange}
-              isError={whichError.some((which) => which === "password")}
-              errorMessage={errorMessage}
-            />
-            <Input
-              id="input_checkPassword"
-              label="密碼確認"
-              type="password"
-              placeholder="請再次輸入密碼"
-              value={checkPassword}
-              onChange={handleCheckPasswordChange}
-              isError={whichError.some((which) => which === "checkPassword")}
-              errorMessage={errorMessage}
-            />
-            <Button
-              primary
-              rounded
-              onClick={handleSaveClick}
-              className="px-4 text-base block ml-auto"
-            >
-              儲存
-            </Button>
-          </StyledFormDiv>
-        </StyledDiv>
+        <Header>
+          <h1>帳戶設定</h1>
+        </Header>
+        <StyledFormDiv>
+          <Input
+            id="input_account"
+            label="帳號"
+            type="text"
+            placeholder="重新設定帳號"
+            value={account}
+            onChange={handleAccountChange}
+            isError={whichError.some((which) => which === "account")}
+            errorMessage={errorMessage}
+          />
+          <Input
+            id="input_name"
+            label="名稱"
+            type="text"
+            placeholder="請設定使用者名稱，不可超過50字"
+            value={name}
+            onChange={handleNameChange}
+            isError={whichError.some((which) => which === "name")}
+            errorMessage={errorMessage}
+          />
+          <Input
+            id="input_email"
+            label="Email"
+            type="text"
+            placeholder="請輸入 Email"
+            value={email}
+            onChange={handleEmailChange}
+            isError={whichError.some((which) => which === "email")}
+            errorMessage={errorMessage}
+          />
+          <Input
+            id="input_password"
+            label="密碼"
+            type="password"
+            placeholder="請設定密碼"
+            value={password}
+            onChange={handlePasswordChange}
+            isError={whichError.some((which) => which === "password")}
+            errorMessage={errorMessage}
+          />
+          <Input
+            id="input_checkPassword"
+            label="密碼確認"
+            type="password"
+            placeholder="請再次輸入密碼"
+            value={checkPassword}
+            onChange={handleCheckPasswordChange}
+            isError={whichError.some((which) => which === "checkPassword")}
+            errorMessage={errorMessage}
+          />
+          <Button
+            primary
+            rounded
+            onClick={handleSaveClick}
+            className="px-4 text-base block ml-auto"
+          >
+            儲存
+          </Button>
+        </StyledFormDiv>
       </MainContainer>
-    </div>
+    </PageContainer>
   );
 }
 

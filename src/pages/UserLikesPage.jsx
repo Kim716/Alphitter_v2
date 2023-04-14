@@ -7,13 +7,13 @@ import { InfoContext } from "contexts/InfoContext";
 // Components
 import MainContainer from "components/containers/MainContainer";
 import ModalContainer from "components/containers/ModalContainer";
-import ViewContainer from "components/containers/ViewContainer";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
 import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserInfo from "components/UserInfo";
 import { UserTweetItem } from "components/TweetItem";
+import PageContainer from "components/containers/PageContainer";
 
 function UserLikesPage() {
   const [userLikedTweets, setUserLikedTweets] = useState([]);
@@ -63,43 +63,41 @@ function UserLikesPage() {
   }, [pageUserId]);
 
   return (
-    <div className="d-flex">
+    <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
       {isReplyModalShow && <ModalContainer value="回覆" />}
       <NavBar isUser={true} onTweetClick={handleTweetClick} status="個人資料" />
       <MainContainer>
-        <ViewContainer>
-          <Header backIcon={true}>
-            <h1>{pageUserInfo.name}</h1>
-            <span>{userLikedTweets.length} 則喜歡的推文</span>
-          </Header>
-          <UserInfo pageUserId={pageUserId} />
-          <SwitchBar
-            value="info"
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-          />
-          <div>
-            {userLikedTweets.map((tweet) => (
-              <UserTweetItem
-                key={tweet.TweetId}
-                tweetId={tweet.TweetId}
-                avatar={tweet.Tweet.User.avatar}
-                userId={tweet.Tweet.User.id}
-                name={tweet.Tweet.User.name}
-                account={tweet.Tweet.User.account}
-                createdAt={tweet.Tweet.createdAt}
-                description={tweet.Tweet.description}
-                replyCount={tweet.Tweet.replyCount}
-                likeCount={tweet.Tweet.likeCount}
-                isLiked={tweet.Tweet.isLiked}
-              />
-            ))}
-          </div>
-        </ViewContainer>
-        <SideBar />
+        <Header backIcon={true}>
+          <h1>{pageUserInfo.name}</h1>
+          <span>{userLikedTweets.length} 則喜歡的推文</span>
+        </Header>
+        <UserInfo pageUserId={pageUserId} />
+        <SwitchBar
+          value="info"
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
+        <div>
+          {userLikedTweets.map((tweet) => (
+            <UserTweetItem
+              key={tweet.TweetId}
+              tweetId={tweet.TweetId}
+              avatar={tweet.Tweet.User.avatar}
+              userId={tweet.Tweet.User.id}
+              name={tweet.Tweet.User.name}
+              account={tweet.Tweet.User.account}
+              createdAt={tweet.Tweet.createdAt}
+              description={tweet.Tweet.description}
+              replyCount={tweet.Tweet.replyCount}
+              likeCount={tweet.Tweet.likeCount}
+              isLiked={tweet.Tweet.isLiked}
+            />
+          ))}
+        </div>
       </MainContainer>
-    </div>
+      <SideBar />
+    </PageContainer>
   );
 }
 

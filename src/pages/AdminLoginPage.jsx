@@ -126,7 +126,7 @@ function AdminLoginPage() {
           登入
         </Button>
       </form>
-      <div className="d-flex justify-content-end mt-3 p-2">
+      <div className="flex justify-end mt-4 p-2">
         <Link to="/login">前台登入</Link>
       </div>
     </AuthContainer>
