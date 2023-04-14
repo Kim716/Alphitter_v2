@@ -5,6 +5,7 @@ import { TweetContext } from "contexts/TweetContext";
 import { InfoContext } from "contexts/InfoContext";
 
 // Components
+import PageContainer from "components/containers/PageContainer";
 import MainContainer from "components/containers/MainContainer";
 import ModalContainer from "components/containers/ModalContainer";
 import Header from "components/Header";
@@ -13,7 +14,6 @@ import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserInfo from "components/UserInfo";
 import { UserTweetItem } from "components/TweetItem";
-import PageContainer from "components/containers/PageContainer";
 
 function UserMainPage() {
   const [currentPage, setCurrentPage] = useState("tweets");
@@ -25,7 +25,8 @@ function UserMainPage() {
     handleTweetClick,
     isReplyModalShow,
   } = useContext(TweetContext);
-  const { isUserLogin, loginAlert, pageUserInfo } = useContext(InfoContext);
+  const { isUserLogin, loginAlert, pageUserInfo, loginUserInfo } =
+    useContext(InfoContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -60,7 +61,7 @@ function UserMainPage() {
     };
 
     getUserTweetsAsync();
-  }, [pageUserId, setTweets]);
+  }, [pageUserId, setTweets, loginUserInfo]);
 
   return (
     <PageContainer>

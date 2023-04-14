@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { getTopUsers } from "api/tweetAuth";
 import { InfoContext } from "contexts/InfoContext";
 
 // components
-
 import Button from "./Button";
+import AvatarLink from "./AvatarLink";
 
 const StyledDiv = styled.div`
   height: 100vh;
@@ -38,7 +37,6 @@ const StyledPopularItem = styled.div`
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    cursor: pointer;
   }
 
   .user-title {
@@ -59,15 +57,9 @@ const StyledPopularItem = styled.div`
 `;
 
 function PopularCard({ id, name, account, avatar, isFollowed, onFollowClick }) {
-  const navigate = useNavigate();
-
-  const handleAvatarClick = (e) => {
-    navigate(`/user/${e.target.dataset.id}`);
-  };
-
   return (
     <StyledPopularItem className="flex">
-      <img src={avatar} data-id={id} alt="avatar" onClick={handleAvatarClick} />
+      <AvatarLink avatar={avatar} userId={id} />
       <div className="user-title flex flex-col">
         <p className="user-name">{name}</p>
         <p>@{account}</p>
@@ -102,7 +94,6 @@ function SideBar() {
     // eslint-disable-next-line
   }, []);
 
-  // !!!
   return (
     <StyledDiv className="col-span-1">
       <StyledPopular>

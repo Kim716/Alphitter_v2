@@ -7,7 +7,7 @@ import Header from "components/Header";
 
 const StyledCardCollection = styled.div`
   width: 100%;
-  height: calc(100vh - 75px);
+  max-height: calc(100vh - 75px);
   padding: 16px;
   overflow: scroll;
 `;

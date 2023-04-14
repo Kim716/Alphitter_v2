@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { postTweetLike, postTweetUnLike } from "api/tweetAuth";
+import { useContext } from "react";
 import { TweetContext } from "contexts/TweetContext";
 
 // Components
 import { ReactComponent as ReplyUnfocus } from "assets/icons/reply_unfocus.svg";
 import { ReactComponent as CrossUnfocus } from "assets/icons/cross_unfocus.svg";
-import { ReactComponent as HeartUnfocus } from "assets/icons/heart_unfocus.svg";
-import { ReactComponent as HeartFocus } from "assets/icons/heart_focus.svg";
+import AvatarLink from "./AvatarLink";
+import LikeIcon from "./LikeIcon";
 
 const StyledDiv = styled.div`
   padding: 16px 24px;
@@ -26,13 +25,10 @@ const StyledDiv = styled.div`
     margin-right: 8px;
     border-radius: 50%;
     object-fit: cover;
-
-    &:hover {
-      outline: 2px solid var(--light-orange);
-    }
   }
 
   .grey {
+    font-size: 14px;
     color: var(--secondary);
   }
 
@@ -42,13 +38,13 @@ const StyledDiv = styled.div`
 
     .user-name {
       font-weight: bold;
-      font-size: 20px;
+      font-size: 16px;
       margin-right: 5px;
     }
 
     .description {
       overflow-wrap: anywhere;
-      padding-top: 15px;
+      padding-top: 8px;
       line-height: 1.6;
     }
   }
@@ -103,37 +99,12 @@ function UserTweetItem({
   replyCount,
   likeCount,
   isLiked,
-  tweet,
 }) {
   const { handleReplyClick } = useContext(TweetContext);
   const navigate = useNavigate();
-  const [isTweetLike, setIsTweetLike] = useState(isLiked);
-  const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
 
   const handleTweetItemClick = () => {
     navigate(`/tweet/${tweetId}`);
-  };
-
-  // 切換愛心狀態
-  const handleLikeClick = async (e) => {
-    e.stopPropagation();
-    try {
-      if (isTweetLike) {
-        await postTweetUnLike(tweetId);
-        setCurrentLikeCount(currentLikeCount - 1);
-      } else {
-        await postTweetLike(tweetId);
-        setCurrentLikeCount(currentLikeCount + 1);
-      }
-      setIsTweetLike(!isTweetLike);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleAvatarClick = (e) => {
-    e.stopPropagation();
-    navigate(`/user/${e.target.dataset.id}`);
   };
 
   return (
@@ -142,7 +113,7 @@ function UserTweetItem({
       data-id={tweetId}
       onClick={handleTweetItemClick}
     >
-      <img src={avatar} alt="" data-id={userId} onClick={handleAvatarClick} />
+      <AvatarLink avatar={avatar} userId={userId} />
       <div className="text-box grow">
         <div>
           <span className="user-name">{name}</span>
@@ -157,9 +128,9 @@ function UserTweetItem({
             <ReplyUnfocus onClick={handleReplyClick} data-id={tweetId} />
             <span>{replyCount}</span>
           </div>
-          <div className="flex items-center" onClick={handleLikeClick}>
-            {isTweetLike ? <HeartFocus /> : <HeartUnfocus />}
-            <span>{currentLikeCount}</span>
+          <div className="flex items-center">
+            <LikeIcon isLiked={isLiked} tweetId={tweetId} />
+            <span>{likeCount}</span>
           </div>
         </div>
       </div>

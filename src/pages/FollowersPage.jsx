@@ -5,6 +5,7 @@ import { TweetContext } from "contexts/TweetContext";
 import { InfoContext } from "contexts/InfoContext";
 
 // Components
+import PageContainer from "components/containers/PageContainer";
 import MainContainer from "components/containers/MainContainer";
 import ModalContainer from "components/containers/ModalContainer";
 import Header from "components/Header";
@@ -12,7 +13,6 @@ import NavBar from "components/NavBar";
 import SideBar from "components/SideBar";
 import SwitchBar from "components/SwitchBar";
 import UserItem from "components/UserItem";
-import PageContainer from "components/containers/PageContainer";
 
 function FollowersPage() {
   const [currentPage, setCurrentPage] = useState("followers");

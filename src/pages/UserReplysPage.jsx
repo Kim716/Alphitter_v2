@@ -20,7 +20,8 @@ function UserReplysPage() {
   const [currentPage, setCurrentPage] = useState("replys");
 
   const { isTweetModalShow, handleTweetClick } = useContext(TweetContext);
-  const { isUserLogin, loginAlert, pageUserInfo } = useContext(InfoContext);
+  const { isUserLogin, loginAlert, pageUserInfo, loginUserInfo } =
+    useContext(InfoContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -59,7 +60,7 @@ function UserReplysPage() {
     };
 
     getUserRepliesAsync();
-  }, [pageUserId]);
+  }, [pageUserId, loginUserInfo]);
 
   return (
     <PageContainer>

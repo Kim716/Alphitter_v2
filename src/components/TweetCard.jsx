@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { postTweetLike, postTweetUnLike } from "api/tweetAuth";
+import { useContext } from "react";
 import { TweetContext } from "contexts/TweetContext";
 
 // Components
 import { ReactComponent as ReplyIcon } from "assets/icons/reply_unfocus.svg";
-import { ReactComponent as UnLikeIcon } from "assets/icons/heart_unfocus.svg";
-import { ReactComponent as LikeIcon } from "assets/icons/heart_focus.svg";
+import LikeIcon from "./LikeIcon";
 
 const StyledDiv = styled.div`
   background: var(--white);
@@ -96,42 +94,14 @@ const StyledDiv = styled.div`
   }
 `;
 
-function TweetCard({
-  tweetId,
-  isTweetLike,
-  setIsTweetLike,
-  currentLikeCount,
-  setCurrentLikeCount,
-}) {
+function TweetCard() {
   const navigate = useNavigate();
 
-  const { handleReplyClick, getSingleTweetAsync, tweet } =
-    useContext(TweetContext);
-
-  const handleLikeClick = async (e) => {
-    e.stopPropagation();
-    try {
-      if (isTweetLike) {
-        await postTweetUnLike(tweet.id);
-        setCurrentLikeCount(currentLikeCount - 1);
-      } else {
-        await postTweetLike(tweet.id);
-        setCurrentLikeCount(currentLikeCount + 1);
-      }
-      setIsTweetLike(!isTweetLike);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { handleReplyClick, tweet } = useContext(TweetContext);
 
   const handleAvatarClick = (e) => {
     navigate(`/user/${e.target.dataset.id}`);
   };
-
-  useEffect(() => {
-    getSingleTweetAsync(tweetId);
-    //eslint-disable-next-line
-  }, []);
 
   return (
     <StyledDiv>
@@ -161,17 +131,13 @@ function TweetCard({
             <span>{tweet.replyCount}</span>回覆
           </p>
           <p>
-            <span>{currentLikeCount}</span>喜歡
+            <span>{tweet.likeCount}</span>喜歡
           </p>
         </div>
       </div>
       <div className="card_action flex">
         <ReplyIcon onClick={handleReplyClick} data-id={tweet.id} />
-        {isTweetLike ? (
-          <LikeIcon onClick={handleLikeClick} />
-        ) : (
-          <UnLikeIcon onClick={handleLikeClick} />
-        )}
+        <LikeIcon isLiked={tweet.isLiked} tweetId={tweet.id} />
       </div>
     </StyledDiv>
   );

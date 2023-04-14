@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import AvatarLink from "./AvatarLink";
 
 const StyledDiv = styled.div`
   background: var(--white);
@@ -55,8 +56,7 @@ function ReplyItem({
 }) {
   return (
     <StyledDiv className="flex">
-      <img src={avatar} alt="avatar" data-id={userId} />
-
+      <AvatarLink avatar={avatar} userId={userId} />
       <div className="grow">
         <p className="user_info">
           <span className="reply_name">{name}</span>@{account}・{createdAt}

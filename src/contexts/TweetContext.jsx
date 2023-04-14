@@ -7,6 +7,7 @@ export function TweetContextProvider({ children }) {
   const [tweet, setTweet] = useState({});
   const [tweetReplies, setTweetReplies] = useState([]);
   const [tweets, setTweets] = useState([]);
+  const [userLikedTweets, setUserLikedTweets] = useState([]);
   const [isTweetModalShow, setIsTweetModalShow] = useState(false);
   const [isReplyModalShow, setIsReplyModalShow] = useState(false);
   const [tweetId, setTweetId] = useState(0);
@@ -37,16 +38,18 @@ export function TweetContextProvider({ children }) {
       value={{
         isTweetModalShow,
         handleTweetClick,
-        tweets,
-        setTweets,
         isReplyModalShow,
         handleReplyClick,
+        tweets,
+        setTweets,
+        tweetId,
         getSingleTweetAsync,
         tweet,
         setTweet,
-        tweetId,
         tweetReplies,
         setTweetReplies,
+        userLikedTweets,
+        setUserLikedTweets,
       }}
     >
       {children}
