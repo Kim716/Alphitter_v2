@@ -16,11 +16,15 @@ import { UserTweetItem } from "components/TweetItem";
 import PageContainer from "components/containers/PageContainer";
 
 function UserLikesPage() {
-  const [userLikedTweets, setUserLikedTweets] = useState([]);
   const [currentPage, setCurrentPage] = useState("likes");
 
-  const { isTweetModalShow, handleTweetClick, isReplyModalShow } =
-    useContext(TweetContext);
+  const {
+    isTweetModalShow,
+    handleTweetClick,
+    isReplyModalShow,
+    userLikedTweets,
+    setUserLikedTweets,
+  } = useContext(TweetContext);
   const { isUserLogin, loginAlert, pageUserInfo, loginUserInfo } =
     useContext(InfoContext);
 
@@ -61,7 +65,7 @@ function UserLikesPage() {
     };
 
     getUserLikedTweetsAsync();
-  }, [pageUserId, loginUserInfo]);
+  }, [pageUserId, loginUserInfo, setUserLikedTweets]);
 
   return (
     <PageContainer>

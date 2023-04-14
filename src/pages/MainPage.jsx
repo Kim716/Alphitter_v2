@@ -5,14 +5,14 @@ import { TweetContext } from "contexts/TweetContext";
 import { InfoContext } from "contexts/InfoContext";
 
 // Components
+import PageContainer from "components/containers/PageContainer";
 import MainContainer from "components/containers/MainContainer";
+import ModalContainer from "components/containers/ModalContainer";
 import SideBar from "components/SideBar";
 import TweetArea from "components/TweetArea";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
 import { UserTweetItem } from "components/TweetItem";
-import ModalContainer from "components/containers/ModalContainer";
-import PageContainer from "components/containers/PageContainer";
 
 function MainPage() {
   const {
