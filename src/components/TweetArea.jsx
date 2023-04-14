@@ -35,7 +35,7 @@ function TweetArea({ onTweetClick, avatar }) {
         primary
         rounded
         onClick={onTweetClick}
-        className="align-self-end text-base"
+        className="self-end text-base"
       >
         推文
       </Button>

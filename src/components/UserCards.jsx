@@ -124,7 +124,7 @@ function UserCard({
 
 function UserCards({ users }) {
   return (
-    <div className="col-9">
+    <div className="col-span-3">
       <Header>
         <h1>使用者列表</h1>
       </Header>

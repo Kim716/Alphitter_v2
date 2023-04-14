@@ -9,6 +9,7 @@ import { AdminContext } from "contexts/AdminContext";
 import NavBar from "components/NavBar";
 import Header from "components/Header";
 import { AdminTweetItem } from "components/TweetItem";
+import PageContainer from "components/containers/PageContainer";
 
 const StyledTweetsDiv = styled.div`
   border-right: 1px solid #e6ecf0;
@@ -99,9 +100,9 @@ function AdminTweetsPage() {
   }, []);
 
   return (
-    <div className="d-flex">
+    <PageContainer>
       <NavBar isUser={false} status="推文清單" />
-      <StyledTweetsDiv className="col-8">
+      <StyledTweetsDiv className="col-span-2">
         <Header>
           <h1>推文清單</h1>
         </Header>
@@ -121,7 +122,7 @@ function AdminTweetsPage() {
           ))}
         </StyledTweetsCollection>
       </StyledTweetsDiv>
-    </div>
+    </PageContainer>
   );
 }
 

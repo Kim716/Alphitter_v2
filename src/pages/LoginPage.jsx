@@ -129,7 +129,7 @@ function LoginPage() {
           登入
         </Button>
       </form>
-      <div className="d-flex justify-content-end mt-3 p-2">
+      <div className="flex justify-end mt-4 p-2">
         <Link to="/register">註冊</Link>
         <span className="mx-2">・</span>
         <Link to="/admin">後台登入</Link>

@@ -259,7 +259,7 @@ function RegisterPage() {
           註冊
         </Button>
       </form>
-      <div className="d-flex justify-content-center mt-4">
+      <div className="flex justify-center mt-6">
         <Link to="/login">取消</Link>
       </div>
     </AuthContainer>
