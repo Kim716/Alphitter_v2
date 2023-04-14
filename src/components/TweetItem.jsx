@@ -30,6 +30,7 @@ const StyledDiv = styled.div`
   }
 
   .grey {
+    font-size: 14px;
     color: var(--secondary);
   }
 
@@ -39,13 +40,13 @@ const StyledDiv = styled.div`
 
     .user-name {
       font-weight: bold;
-      font-size: 20px;
+      font-size: 16px;
       margin-right: 5px;
     }
 
     .description {
       overflow-wrap: anywhere;
-      padding-top: 15px;
+      padding-top: 8px;
       line-height: 1.6;
     }
   }

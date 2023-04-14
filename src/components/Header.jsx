@@ -22,7 +22,7 @@ const StyledHeader = styled.div`
   }
 
   .title:has(span) {
-    margin-top: -8px;
+    margin-top: -15px;
   }
 
   h1 {
@@ -32,7 +32,6 @@ const StyledHeader = styled.div`
   }
 
   span {
-    margin-top: 5px;
     color: var(--secondary);
     font-size: 13px;
   }
