@@ -165,13 +165,13 @@ function UserInfo({ pageUserId }) {
         <span className="grey">@{pageUserInfo.account}</span>
         <p>{pageUserInfo.introduction}</p>
         <div className="follow-box flex">
+          <p onClick={() => navigate(`/user/${pageUserId}/followers`)}>
+            <span>{pageUserInfo.followerCount} 個</span>
+            <span className="grey">跟隨者</span>
+          </p>
           <p onClick={() => navigate(`/user/${pageUserId}/following`)}>
             <span>{pageUserInfo.followingCount} 個</span>
-            <span className="grey">跟隨中</span>
-          </p>
-          <p onClick={() => navigate(`/user/${pageUserId}/followers`)}>
-            <span>{pageUserInfo.followerCount} 位</span>
-            <span className="grey">跟隨者</span>
+            <span className="grey">正在跟隨</span>
           </p>
         </div>
       </div>

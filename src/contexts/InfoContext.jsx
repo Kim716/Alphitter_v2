@@ -52,7 +52,9 @@ export function InfoContextProvider({ children }) {
         followingInfo = await postFollowships({ id });
       }
 
+      // 更新 User 頁面的數字
       setPageUserInfo((pageUserInfo) => {
+        // 如果是在點擊跟隨/取消跟隨的那個 User 頁面，要更改的是 follower 數量
         if (pageUserInfo.id === id) {
           return {
             ...pageUserInfo,
@@ -62,7 +64,9 @@ export function InfoContextProvider({ children }) {
             isFollowed: !pageUserInfo.isFollowed,
           };
         }
-        if (pageUserInfo.id !== id) {
+
+        // 如果是在自己的 User 頁面，要更改的是 following 數量
+        if (pageUserInfo.id === loginUserId) {
           return {
             ...pageUserInfo,
             followingCount: isFollowed
@@ -71,8 +75,12 @@ export function InfoContextProvider({ children }) {
             isFollowed: !pageUserInfo.isFollowed,
           };
         }
+
+        // 其餘的狀況都不用變
+        return { ...pageUserInfo };
       });
 
+      // 更新右邊推薦跟隨的按鈕狀態
       setTopUsers((topUsers) => {
         return topUsers.map((topUser) => {
           if (topUser.id === id) {
@@ -85,6 +93,7 @@ export function InfoContextProvider({ children }) {
         });
       });
 
+      // 在跟隨中的頁面
       setFollowings((followings) => {
         // 在自己的頁面取消追蹤會過濾掉，增加追蹤會即時顯示
         if (pageUserId === loginUserId) {
@@ -96,6 +105,7 @@ export function InfoContextProvider({ children }) {
             return [followingInfo, ...followings];
           }
         }
+
         // 在別人的頁面去消追蹤只會更改跟隨按鈕的樣式
         return followings.map((following) => {
           if (following.followingId === id) {
@@ -111,6 +121,7 @@ export function InfoContextProvider({ children }) {
         });
       });
 
+      // 在跟隨者頁面畫面只會更改按鈕狀態
       setFollowers((followers) => {
         return followers.map((follower) => {
           if (follower.followerId === id) {
@@ -133,8 +144,10 @@ export function InfoContextProvider({ children }) {
   // useEffect
   // 打當前頁面的使用者資料
   useEffect(() => {
+    console.log("info out");
     // 有進入 UserPages 系列，並且抓到 id 才打資料
     if (isUserPages && pageUserId) {
+      console.log("info in");
       const getUserInfoAsync = async () => {
         try {
           const userInfoData = await getUserInfo(pageUserId);
@@ -155,6 +168,7 @@ export function InfoContextProvider({ children }) {
             });
 
             navigate("/main");
+
             return;
           }
 
@@ -166,8 +180,7 @@ export function InfoContextProvider({ children }) {
 
       getUserInfoAsync();
     }
-    //eslint-disable-next-line
-  }, [isUserPages, pageUserId]);
+  }, [isUserPages, navigate, pageUserId]);
 
   // 打登入者的資料
   useEffect(() => {

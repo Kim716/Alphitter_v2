@@ -17,8 +17,7 @@ import PageContainer from "components/containers/PageContainer";
 function FollowingPage() {
   const [currentPage, setCurrentPage] = useState("following");
 
-  const { tweets, isTweetModalShow, handleTweetClick } =
-    useContext(TweetContext);
+  const { isTweetModalShow, handleTweetClick } = useContext(TweetContext);
   const {
     isUserLogin,
     loginAlert,
@@ -60,17 +59,16 @@ function FollowingPage() {
       }
     };
     getFollowingsAsync();
-    // eslint-disable-next-line
-  }, [pageUserId]);
+  }, [pageUserId, setFollowings]);
 
   return (
     <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
-      <NavBar isUser={true} onTweetClick={handleTweetClick} />
+      <NavBar isUser={true} onTweetClick={handleTweetClick} status="個人資料" />
       <MainContainer>
         <Header backIcon={true}>
           <h1>{pageUserInfo.name}</h1>
-          <span>{tweets.length} 則推文</span>
+          <span>{followings.length} 個正在跟隨</span>
         </Header>
         <SwitchBar
           value="follow"
