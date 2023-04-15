@@ -1,5 +1,5 @@
 import { getSingleTweet } from "api/tweetAuth";
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 export const TweetContext = createContext("");
 
@@ -24,14 +24,14 @@ export function TweetContextProvider({ children }) {
     setIsReplyModalShow(!isReplyModalShow);
   };
 
-  const getSingleTweetAsync = async (tweetId) => {
+  const getSingleTweetAsync = useCallback(async (tweetId) => {
     try {
       const singleTweet = await getSingleTweet(tweetId);
       setTweet(singleTweet);
     } catch (error) {
       console.error(error);
     }
-  };
+  }, []);
 
   return (
     <TweetContext.Provider

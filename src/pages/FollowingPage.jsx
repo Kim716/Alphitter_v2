@@ -59,8 +59,7 @@ function FollowingPage() {
       }
     };
     getFollowingsAsync();
-    // eslint-disable-next-line
-  }, [pageUserId]);
+  }, [pageUserId, setFollowings]);
 
   return (
     <PageContainer>

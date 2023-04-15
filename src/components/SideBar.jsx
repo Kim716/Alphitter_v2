@@ -91,8 +91,7 @@ function SideBar() {
       }
     };
     getTopUsersAsync();
-    // eslint-disable-next-line
-  }, []);
+  }, [setTopUsers]);
 
   return (
     <StyledDiv className="col-span-1">

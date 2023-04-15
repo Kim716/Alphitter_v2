@@ -59,8 +59,7 @@ function FollowersPage() {
       }
     };
     getFollowersAsync();
-    // eslint-disable-next-line
-  }, [pageUserId]);
+  }, [pageUserId, setFollowers]);
 
   return (
     <PageContainer>

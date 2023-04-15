@@ -51,8 +51,7 @@ function TweetPage() {
 
     getSingleTweetAsync(tweetId);
     getSingleTweetRepliesAsync();
-    //eslint-disable-next-line
-  }, [tweetId]);
+  }, [getSingleTweetAsync, setTweetReplies, tweetId]);
 
   return (
     <PageContainer>

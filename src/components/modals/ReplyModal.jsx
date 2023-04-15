@@ -198,8 +198,7 @@ function ReplyModal() {
 
   useEffect(() => {
     getSingleTweetAsync(tweetId);
-    //eslint-disable-next-line
-  }, []);
+  }, [getSingleTweetAsync, tweetId]);
 
   return (
     <StyledDiv>
