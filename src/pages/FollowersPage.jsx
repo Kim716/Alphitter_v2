@@ -17,8 +17,7 @@ import UserItem from "components/UserItem";
 function FollowersPage() {
   const [currentPage, setCurrentPage] = useState("followers");
 
-  const { tweets, isTweetModalShow, handleTweetClick } =
-    useContext(TweetContext);
+  const { isTweetModalShow, handleTweetClick } = useContext(TweetContext);
   const {
     isUserLogin,
     loginAlert,
@@ -66,11 +65,11 @@ function FollowersPage() {
   return (
     <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
-      <NavBar isUser={true} onTweetClick={handleTweetClick} />
+      <NavBar isUser={true} onTweetClick={handleTweetClick} status="個人資料" />
       <MainContainer>
         <Header backIcon={true}>
           <h1>{pageUserInfo.name}</h1>
-          <span>{tweets.length} 則推文</span>
+          <span>{followers.length} 個跟隨者</span>
         </Header>
         <SwitchBar
           value="follow"

@@ -59,13 +59,13 @@ function FollowPageSwitchBar({ onPageChange, currentPage }) {
         className={currentPage === "followers" ? "active" : ""}
         onClick={() => onPageChange?.("followers")}
       >
-        <h1>追隨者</h1>
+        <h1>跟隨者</h1>
       </div>
       <div
         className={currentPage === "following" ? "active" : ""}
         onClick={() => onPageChange?.("following")}
       >
-        <h1>正在追隨</h1>
+        <h1>正在跟隨</h1>
       </div>
     </StyledDiv>
   );
