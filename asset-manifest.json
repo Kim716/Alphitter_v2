@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Alphitter_v2/static/css/main.2c69a448.css",
-    "main.js": "/Alphitter_v2/static/js/main.34583951.js",
+    "main.js": "/Alphitter_v2/static/js/main.d1bf12ad.js",
     "static/media/set_unfocus.svg": "/Alphitter_v2/static/media/set_unfocus.f816c687fe9a4bd78229ba4e78f87620.svg",
     "static/media/set_focus.svg": "/Alphitter_v2/static/media/set_focus.53670273838eeeda8dbecd8c276f620c.svg",
     "static/media/noti_focus.svg": "/Alphitter_v2/static/media/noti_focus.0445c5255607edcb258c51946d18e04f.svg",
@@ -25,10 +25,10 @@
     "index.html": "/Alphitter_v2/index.html",
     "static/media/heart_focus.svg": "/Alphitter_v2/static/media/heart_focus.5e5d892842ae545d6d81b84cec2019b6.svg",
     "main.2c69a448.css.map": "/Alphitter_v2/static/css/main.2c69a448.css.map",
-    "main.34583951.js.map": "/Alphitter_v2/static/js/main.34583951.js.map"
+    "main.d1bf12ad.js.map": "/Alphitter_v2/static/js/main.d1bf12ad.js.map"
   },
   "entrypoints": [
     "static/css/main.2c69a448.css",
-    "static/js/main.34583951.js"
+    "static/js/main.d1bf12ad.js"
   ]
 }
