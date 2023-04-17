@@ -2,7 +2,6 @@ import axios from "axios";
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 const baseUrl = `${apiDomain}/users`;
-// const baseUrl = "https://nameless-brook-67603.herokuapp.com/api/users";
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
