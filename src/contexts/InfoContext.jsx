@@ -144,10 +144,8 @@ export function InfoContextProvider({ children }) {
   // useEffect
   // 打當前頁面的使用者資料
   useEffect(() => {
-    console.log("info out");
     // 有進入 UserPages 系列，並且抓到 id 才打資料
     if (isUserPages && pageUserId) {
-      console.log("info in");
       const getUserInfoAsync = async () => {
         try {
           const userInfoData = await getUserInfo(pageUserId);
