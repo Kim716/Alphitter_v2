@@ -113,9 +113,10 @@ function ReplyModal() {
     setTweetReplies,
     tweets,
     setTweets,
+    userLikedTweets,
+    setUserLikedTweets,
   } = useContext(TweetContext);
-  const { loginUserInfo, userLikedTweets, setUserLikedTweets } =
-    useContext(InfoContext);
+  const { loginUserInfo } = useContext(InfoContext);
 
   const handleAddReplyClick = async () => {
     // 內容空白，或是全為空白格會先被擋掉
