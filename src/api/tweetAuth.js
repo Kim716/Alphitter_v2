@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
+const apiDomain = import.meta.env.VITE_API_DOMAIN;
 const baseUrl = `${apiDomain}/tweets`;
 
 const axiosInstance = axios.create({

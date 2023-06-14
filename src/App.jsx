@@ -26,7 +26,7 @@ import { TweetContextProvider } from "contexts/TweetContext";
 import { InfoContextProvider } from "contexts/InfoContext";
 import { AdminContextProvider } from "contexts/AdminContext";
 
-const basename = process.env.PUBLIC_URL;
+const basename = import.meta.env.VITE_PUBLIC_URL;
 
 function App() {
   return (
