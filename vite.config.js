@@ -5,7 +5,7 @@ import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
   plugins: [svgr(), react(), jsconfigPaths()],
-  base: "/tets/",
+  base: "/Alphitter_v2/",
   build: {
     rollupOptions: {
       output: {
