@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { TweetContext } from 'contexts/TweetContext';
@@ -12,12 +12,18 @@ import PageContainer from 'components/containers/PageContainer';
 function TwoBarsLayout() {
   const { isTweetModalShow, handleTweetClick, isReplyModalShow } =
     useContext(TweetContext);
+  const [activeTitle, setActiveTitle] = useState('首頁');
 
   return (
     <PageContainer>
       {isTweetModalShow && <ModalContainer value="推文" />}
       {isReplyModalShow && <ModalContainer value="回覆" />}
-      <NavBar isUser={true} onTweetClick={handleTweetClick} status="首頁" />
+      <NavBar
+        isUser={true}
+        onTweetClick={handleTweetClick}
+        activeTitle={activeTitle}
+        setActiveTitle={setActiveTitle}
+      />
       <MainContainer>
         <Outlet />
       </MainContainer>
