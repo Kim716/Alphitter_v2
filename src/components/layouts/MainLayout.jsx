@@ -1,9 +1,13 @@
+import { useContext } from 'react';
+import { Outlet } from 'react-router-dom';
+
+import { TweetContext } from 'contexts/TweetContext';
+
 import NavBar from 'components/NavBar';
 import SideBar from 'components/SideBar';
 import MainContainer from 'components/containers/MainContainer';
 import ModalContainer from 'components/containers/ModalContainer';
 import PageContainer from 'components/containers/PageContainer';
-import { Outlet } from 'react-router-dom';
 
 function MainLayout() {
   const { isTweetModalShow, handleTweetClick, isReplyModalShow } =
