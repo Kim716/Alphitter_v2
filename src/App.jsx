@@ -26,6 +26,7 @@ import TwoBarsLayout from 'components/layouts/TwoBarsLayout';
 import { TweetContextProvider } from 'contexts/TweetContext';
 import { InfoContextProvider } from 'contexts/InfoContext';
 import { AdminContextProvider } from 'contexts/AdminContext';
+import AdminLayout from 'components/layouts/AdminLayout';
 
 const basename = import.meta.env.VITE_PUBLIC_URL;
 
@@ -38,8 +39,10 @@ function App() {
             <Routes>
               <Route path="admin">
                 <Route index element={<AdminLoginPage />} />
-                <Route path="users" element={<AdminUsersPage />} />
-                <Route path="tweets" element={<AdminTweetsPage />} />
+                <Route element={<AdminLayout />}>
+                  <Route path="users" element={<AdminUsersPage />} />
+                  <Route path="tweets" element={<AdminTweetsPage />} />
+                </Route>
               </Route>
 
               <Route path="login" element={<LoginPage />} />
