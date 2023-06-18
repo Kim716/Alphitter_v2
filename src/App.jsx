@@ -1,9 +1,9 @@
 // CSS
-import "./styles/reset.css";
-import "./styles/base.css";
+import './styles/reset.css';
+import './styles/base.css';
 
 // Package
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Pages
 import {
@@ -21,10 +21,11 @@ import {
   UserMainPage,
   UserReplysPage,
   NoMatch,
-} from "./pages";
-import { TweetContextProvider } from "contexts/TweetContext";
-import { InfoContextProvider } from "contexts/InfoContext";
-import { AdminContextProvider } from "contexts/AdminContext";
+} from './pages';
+import MainLayout from 'components/layouts/MainLayout';
+import { TweetContextProvider } from 'contexts/TweetContext';
+import { InfoContextProvider } from 'contexts/InfoContext';
+import { AdminContextProvider } from 'contexts/AdminContext';
 
 const basename = import.meta.env.VITE_PUBLIC_URL;
 
@@ -41,18 +42,20 @@ function App() {
                 <Route path="tweets" element={<AdminTweetsPage />} />
               </Route>
 
-              <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
+              <Route path="register" element={<RegisterPage />} />
               <Route path="setting" element={<SettingPage />} />
-              <Route path="main" element={<MainPage />} />
-              <Route path="tweet/:id" element={<TweetPage />} />
 
-              <Route path="user/:id">
-                <Route index element={<UserMainPage />} />
-                <Route path="replys" element={<UserReplysPage />} />
-                <Route path="likes" element={<UserLikesPage />} />
-                <Route path="followers" element={<FollowersPage />} />
-                <Route path="following" element={<FollowingPage />} />
+              <Route element={<MainLayout />}>
+                <Route path="main" element={<MainPage />} />
+                <Route path="tweet/:id" element={<TweetPage />} />
+                <Route path="user/:id">
+                  <Route index element={<UserMainPage />} />
+                  <Route path="replys" element={<UserReplysPage />} />
+                  <Route path="likes" element={<UserLikesPage />} />
+                  <Route path="followers" element={<FollowersPage />} />
+                  <Route path="following" element={<FollowingPage />} />
+                </Route>
               </Route>
 
               {/* * 代表除了以上設定好的路由，其他字串不符合的會被導引到 NoMatch */}
