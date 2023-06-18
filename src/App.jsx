@@ -22,7 +22,7 @@ import {
   UserReplysPage,
   NoMatch,
 } from './pages';
-import MainLayout from 'components/layouts/MainLayout';
+import TwoBarsLayout from 'components/layouts/TwoBarsLayout';
 import { TweetContextProvider } from 'contexts/TweetContext';
 import { InfoContextProvider } from 'contexts/InfoContext';
 import { AdminContextProvider } from 'contexts/AdminContext';
@@ -46,7 +46,7 @@ function App() {
               <Route path="register" element={<RegisterPage />} />
               <Route path="setting" element={<SettingPage />} />
 
-              <Route element={<MainLayout />}>
+              <Route element={<TwoBarsLayout />}>
                 <Route path="main" element={<MainPage />} />
                 <Route path="tweet/:id" element={<TweetPage />} />
                 <Route path="user/:id">

@@ -9,7 +9,7 @@ import MainContainer from 'components/containers/MainContainer';
 import ModalContainer from 'components/containers/ModalContainer';
 import PageContainer from 'components/containers/PageContainer';
 
-function MainLayout() {
+function TwoBarsLayout() {
   const { isTweetModalShow, handleTweetClick, isReplyModalShow } =
     useContext(TweetContext);
 
@@ -26,4 +26,4 @@ function MainLayout() {
   );
 }
 
-export default MainLayout;
+export default TwoBarsLayout;
