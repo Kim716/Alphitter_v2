@@ -22,11 +22,13 @@ import {
   UserReplysPage,
   NoMatch,
 } from './pages';
-import TwoBarsLayout from 'components/layouts/TwoBarsLayout';
+import MainLayout from 'components/layouts/MainLayout';
 import { TweetContextProvider } from 'contexts/TweetContext';
 import { InfoContextProvider } from 'contexts/InfoContext';
 import { AdminContextProvider } from 'contexts/AdminContext';
 import AdminLayout from 'components/layouts/AdminLayout';
+import NavLayout from 'components/layouts/NavLayout';
+import SideLayout from 'components/layouts/SideLayout';
 
 const basename = import.meta.env.VITE_PUBLIC_URL;
 
@@ -47,17 +49,23 @@ function App() {
 
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
-              <Route path="setting" element={<SettingPage />} />
 
-              <Route element={<TwoBarsLayout />}>
-                <Route path="main" element={<MainPage />} />
-                <Route path="tweet/:id" element={<TweetPage />} />
-                <Route path="user/:id">
-                  <Route index element={<UserMainPage />} />
-                  <Route path="replys" element={<UserReplysPage />} />
-                  <Route path="likes" element={<UserLikesPage />} />
-                  <Route path="followers" element={<FollowersPage />} />
-                  <Route path="following" element={<FollowingPage />} />
+              <Route element={<MainLayout />}>
+                <Route element={<NavLayout />}>
+                  <Route path="setting" element={<SettingPage />} />
+                  <Route element={<SideLayout />}>
+                    <Route>
+                      <Route path="main" element={<MainPage />} />
+                      <Route path="tweet/:id" element={<TweetPage />} />
+                      <Route path="user/:id">
+                        <Route index element={<UserMainPage />} />
+                        <Route path="replys" element={<UserReplysPage />} />
+                        <Route path="likes" element={<UserLikesPage />} />
+                        <Route path="followers" element={<FollowersPage />} />
+                        <Route path="following" element={<FollowingPage />} />
+                      </Route>
+                    </Route>
+                  </Route>
                 </Route>
               </Route>
 
